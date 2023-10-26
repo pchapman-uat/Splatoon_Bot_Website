@@ -78,6 +78,7 @@ footer{
     bottom: 0;
     left: 0;
     right: 0;
+    font-size: x-large;
     margin-left: 5%;
     margin-right: 5%; 
     padding-bottom: 30px;
@@ -138,7 +139,6 @@ footer{
     align-content: center;
     height: 250px;
     display: flex;
-    
     flex-direction: column;
     justify-content: space-evenly;
 }
