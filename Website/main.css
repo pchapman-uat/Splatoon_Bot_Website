@@ -1,0 +1,303 @@
+:root {
+    --SP_size: 400px;
+    --SP_padding: 5%;
+    --Light_BG: rgba(131, 129, 129, 0.349);
+    --About_width: 200px;
+
+}
+html {
+    position: relative;
+    min-height: 100%;
+}
+body{
+    background-image: url("/images/background.png");
+    color: white;
+    background-size: 100%;
+    background-repeat: repeat-y;
+    padding-bottom: 100px;
+
+
+}
+.title{
+    text-align: center;
+    margin-right: 25%;
+    margin-left: 25%;
+    background-color: var(--Light_BG);
+    padding-bottom: 2%;
+    border-radius: 70px;
+}
+
+h1{
+    font-size: 70px;
+    font-weight: 100;
+    font-family: Splatoon;
+}
+
+
+
+nav{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    font-size: xx-large;
+    padding: 0.75%;
+    display: flex;
+    justify-content: space-between;
+}
+nav_image{
+    padding: 0%;
+    vertical-align: middle; 
+    cursor: grab;
+}
+
+items{
+    width: 100%;
+    text-align: right;
+    padding-top: 0.4%;
+    padding-right: 2%;
+} 
+
+items a{
+    padding-left: 1%;
+    color: white;
+}
+.desc{
+    font-size: x-large;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.shadow{
+    --shadow: 3px;
+    text-shadow: var(--shadow) var(--shadow) 0 #000, var(--shadow) var(--shadow) 0 #000, var(--shadow) var(--shadow) 0 #000, var(--shadow) var(--shadow) 0 #000;
+}
+
+
+footer{
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: 5%;
+    margin-right: 5%; 
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.rounded{
+    padding-top: 1.5%;
+    background-color: rgba(92, 92, 92, 0.555);
+    border-radius: 100px;
+}
+
+
+.sneakpeak{
+    padding-left: var(--SP_padding);
+    padding-right: var(--SP_padding);
+    display: flex;
+    justify-content: space-between;
+}
+.sp_txt{
+    width: var(--SP_size);
+    text-align: center;
+}
+
+.imagetext{
+    border-radius: 50px;
+    padding: 1.5%;
+    padding-top: 2%;
+    background-color: rgba(169, 169, 169, 0.208);
+}
+
+.imagetext img{
+    width: var(--SP_size);
+    margin-bottom: 2%;
+}
+
+.about{
+    margin-top: 3%;
+    padding-left: var(--SP_padding);
+    padding-right: var(--SP_padding);
+    display: flex;
+    justify-content: space-between;
+
+}
+.info{
+    padding: 1%;
+    width: var(--About_width);
+    text-align: center;
+    background-color: var(--Light_BG);
+    border-radius: 25px;
+}
+.info .profile{
+    width: var(--About_width);
+    border-radius: 100%;
+}
+.buttons{
+    align-content: center;
+    height: 250px;
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.info button{
+    margin-top: 5%;
+    width: 100%;
+    height: 75px;
+    font-size: 40px;
+    border-radius: 10px;
+}
+
+
+.info img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    border-radius: 15%;
+}
+
+.name{
+    padding-top: 4%;
+    font-family: Splatoon;
+    font-size: 30px;
+}
+
+.buttons img{
+    padding: 5%;
+}
+.Modrinth{
+    background-color: rgb(77, 131, 40);
+}
+
+.Youtube{
+    background-color: rgb(136, 0, 0);
+}
+
+.Twitch{
+    background-color: rgb(165, 106, 255);
+}
+
+.Discord{
+    background-color: rgb(74, 85, 202);
+}
+
+.TicToc{
+    background-color: rgba(99, 21, 21, 0.589)
+}
+
+
+
+/* Gallary */
+
+.gallary{
+    display: flex;
+    margin: 5%;
+    height: 1000px;
+    background-color: var(--Light_BG);
+    border-radius: 50px;
+    justify-content: space-between;
+}
+
+
+#gall_img{
+    border-radius: 20px;
+    margin: 3%;
+    width: 30%;
+    background-color: red;
+}
+
+.gall_info{
+    display: flex;
+    margin: 3%;
+    width: 50%;
+    /* background-color: orange; */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#gall_header{
+    font-family: Splatoon;
+    font-size: 70px;
+    height: 25%;
+    /* background-color: greenyellow; */
+}
+.gall_txt{
+    background-color: var(--Light_BG);
+    padding-left: 5%;
+    border-radius: 50px;
+    width: 95%;
+    height: 85%;
+}
+
+#gall_about {
+    font-size: 30px;
+}
+
+.gall_button{
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gall_button button{
+    --button_scale: 80px; 
+    width: var(--button_scale);
+    height: var(--button_scale);
+    font-size: 30px;
+    border-color:#00000000;
+    border-radius: 100%;
+
+}
+
+/* Documentation */
+
+.doc_section{
+    background-color: var(--Light_BG);
+    margin-top: 50px;
+    padding: 2%;
+    padding-top: 1%;
+    border-radius: 50px;
+}
+
+/* Images */
+
+h2{
+    --margin_lr: 27%;
+    --padding_td: 1%;
+    margin-right: var(--margin_lr);
+    margin-left: var(--margin_lr);
+    padding-top: var(--padding_td);
+    padding-bottom: var(--padding_td);
+    text-align: center;
+    background-color:  var(--Light_BG);
+    border-radius: 40px;
+}
+
+.images {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+.item {
+   
+    font-family: Splatoon;
+    text-align: center;
+    padding: 1%;
+    margin: 0.5%;
+    margin-right: 2%;
+    background-color: var(--Light_BG);
+    border-radius: 10px;
+}
+.item img{
+    width: 100px;
+}
+@font-face {
+    font-family: Splatoon;
+    src: url("Splatoon2.otf");
+}
