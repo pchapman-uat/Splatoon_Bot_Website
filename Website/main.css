@@ -24,6 +24,7 @@ body{
     margin-left: 25%;
     background-color: var(--Light_BG);
     padding-bottom: 2%;
+    margin-bottom: 30px;
     border-radius: 70px;
 }
 
@@ -31,6 +32,7 @@ h1{
     font-size: 70px;
     font-weight: 100;
     font-family: Splatoon;
+    margin-bottom: -1%;
 }
 
 
@@ -305,21 +307,28 @@ footer{
 }
 
 /* How to */
+.points{
+    margin-top: 5%;
+    --lr_margin: 5%;
+    margin-left: var(--lr_margin);
+    margin-right: var(--lr_margin);
+}
 
-.ht_section {
-    margin: 5%;
+.points div.section {
+    margin-bottom: 3%;
     background-color: var(--Light_BG);
     padding: 1%;
     border-radius: 30px;
 }
 
-.ht_section div.header {
-    font-size: xx-large;
+.points div.header {
+    font-size: 250%;
     font-family: Splatoon;
 }
 
-.ht_section div.text{
-    font-size: x-large;
+.points div.text{
+    font-size: 175%;
+    line-height: 1.25;
 }
 
 
