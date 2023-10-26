@@ -266,9 +266,10 @@ footer{
 
 /* Images */
 
-h2{
+.img_header{
     --margin_lr: 27%;
     --padding_td: 1%;
+    font-size: xx-large;
     margin-right: var(--margin_lr);
     margin-left: var(--margin_lr);
     padding-top: var(--padding_td);
