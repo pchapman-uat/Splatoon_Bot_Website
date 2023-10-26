@@ -16,6 +16,7 @@ var gallary = [
 ]
 
 var nav_buttons = [
+    {name: "How To", id: "how_to", file: "how_to.html"},
     {name: "Commands", id: "commands", file: 'commands.html'},
     {name: "Documentation", id: "documentation", file:"documentation.html"},
     {name: "Invite", id: "invite", file:"invite.html"}

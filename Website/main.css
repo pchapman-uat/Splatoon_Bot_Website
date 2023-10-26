@@ -189,6 +189,11 @@ footer{
 }
 
 
+.code {
+    padding: 5px;
+    background-color: black;
+}
+
 
 /* Gallary */
 
@@ -298,6 +303,27 @@ footer{
 .item img{
     width: 100px;
 }
+
+/* How to */
+
+.ht_section {
+    margin: 5%;
+    background-color: var(--Light_BG);
+    padding: 1%;
+    border-radius: 30px;
+}
+
+.ht_section div.header {
+    font-size: xx-large;
+    font-family: Splatoon;
+}
+
+.ht_section div.text{
+    font-size: x-large;
+}
+
+
+
 @font-face {
     font-family: Splatoon;
     src: url("Splatoon2.otf");
