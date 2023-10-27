@@ -1,6 +1,6 @@
 :root {
-    --SP_size: 400px;
-    --SP_padding: 15%;
+    --SP_size: 500px;
+    
     --Light_BG: rgba(131, 129, 129, 0.349);
     --About_width: 200px;
 
@@ -98,6 +98,7 @@ footer{
 
 
 .sneakpeak{
+    --SP_padding: 10%;
     padding-left: var(--SP_padding);
     padding-right: var(--SP_padding);
     display: flex;
@@ -122,8 +123,9 @@ footer{
 
 .about{
     margin-top: 3%;
-    padding-left: var(--SP_padding);
-    padding-right: var(--SP_padding);
+    --abt_padding: 15%;
+    padding-left: var(--abt_padding);
+    padding-right: var(--abt_padding);
     display: flex;
     justify-content: space-between;
 
