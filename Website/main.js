@@ -11,7 +11,7 @@ function loadinfo(location, page){
     
 }
 var gallary = [
-    {header: "Header 1", image: "/images/background.png", text:'This is a test, I hope this works, please work I am begging you!'},
+    {header: "Header 1", image: "images/background.png", text:'This is a test, I hope this works, please work I am begging you!'},
     {header: "Header 2", image: "", text:'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
 ]
 
@@ -19,7 +19,14 @@ var nav_buttons = [
     {name: "How To", id: "how_to", file: "how_to.html"},
     {name: "Commands", id: "commands", file: 'commands.html'},
     {name: "Documentation", id: "documentation", file:"documentation.html"},
-    {name: "Invite", id: "invite", file:"invite.html"}
+    {name: "Invite", id: "invite", file:"invite.html"},
+    {name: "Git", id:"git", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/git_hub_viewer.html"}
+]
+var git_buttons = [
+    {name: "How To", id: "how_to", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/how_to.html"},
+    {name: "Commands", id: "commands", file: 'https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/commands.html'},
+    {name: "Documentation", id: "documentation", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/documentation.html"},
+    {name: "Invite", id: "invite", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/invite.html"}
 ]
 
 var images = [
@@ -129,6 +136,30 @@ function loadnav(location){
     parent.appendChild(nav_items)
     
     createbuttons("items", nav_buttons, location)
+
+}
+
+function git_nav(location){
+    //<a class="home_img" href="home.html"><img id="svgImage" src="home.svg" width="40px"></a> 
+    var parent = document.getElementById("nav")
+
+
+    var nav_image = document.createElement("a")
+    nav_image.setAttribute("class", "home_img")
+    nav_image.setAttribute("href", "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html")
+    parent.appendChild(nav_image)
+
+    var image = document.createElement("img")
+    image.setAttribute("id","svgImage")
+    image.setAttribute("src","home.svg")
+    image.setAttribute("width","50px")
+    nav_image.appendChild(image)
+
+    var nav_items = document.createElement("items")
+    nav_items.setAttribute("id", "items")
+    parent.appendChild(nav_items)
+    
+    createbuttons("items", git_buttons, location)
 
 }
 
