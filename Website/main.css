@@ -205,8 +205,8 @@ footer{
 
 .gallary{
     display: flex;
-    margin: 5%;
-    height: 1000px;
+    margin: 10%;
+    height: 750px;
     background-color: var(--Light_BG);
     border-radius: 50px;
     justify-content: space-between;
@@ -231,7 +231,7 @@ footer{
 
 #gall_header{
     font-family: Splatoon;
-    font-size: 70px;
+    font-size: 60px;
     height: 25%;
     /* background-color: greenyellow; */
 }
@@ -244,7 +244,7 @@ footer{
 }
 
 #gall_about {
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .gall_button{
