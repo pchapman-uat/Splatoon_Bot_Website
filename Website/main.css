@@ -35,7 +35,9 @@ h1{
     margin-bottom: -1%;
 }
 
-
+.center{
+    text-align: center;
+}
 
 nav{
     background-color: rgba(0, 0, 0, 0.5);
@@ -46,7 +48,6 @@ nav{
     justify-content: space-between;
 }
 nav_image{
-    padding: 0%;
     vertical-align: middle; 
     cursor: grab;
 }
