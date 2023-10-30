@@ -4,8 +4,10 @@ function loadinfo(location, page){
     nav_color(page)
     if(page === "home"){
         set_gallary(0)
-    } else if(page="images"){
+    } else if(page === "images"){
         loadsalmon()
+    } else if(page === "leaderboard"){
+        load_leaderboard()
     }
 }
 var gallary = [
@@ -50,6 +52,12 @@ var images = [
     {name: "Horrorboros", image: "https://media.discordapp.net/attachments/1142680467825500264/1145209514153480283/S3_Horrorboros_icon.png?width=800&height=800"},
 ]
 
+var leaderboard = [
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 600},
+    {name: "Banana", avatar: "", score: 500},
+    {name: "Poison", avatar: "", score: 700},
+    {name: "Agent T", avatar: "", score: 200}
+]
 // Duration in seconds
 var ani_duration = 1
 
@@ -165,6 +173,30 @@ function nav_color(page){
     }
 
 
+}
+
+function load_leaderboard(){
+    console.log("Loading leaderboard")
+    leaderboard.sort((a, b) => Number(b.score) - Number(a.score))
+    console.log(leaderboard)
+    let places = ["first", "second", "third"]
+    for(i in leaderboard){
+        console.log("adding element")
+        console.log(i)
+        console.log(places.length)
+        if(i >= places.length){
+            console.log("Remaining")
+            let parent = document.getElementById("remaining")
+            parent.innerHTML = parent.innerHTML + "<br>" + leaderboard[i].name
+        } else {
+            console.log(places[i])
+            let parent = document.getElementById(places[i])
+            let name = document.createElement("div")
+            name.setAttribute("id", `${places[i]}_txt`)
+            name.innerHTML = leaderboard[i].name
+            parent.appendChild(name)
+        }
+    }
 }
 function loadFooter(){
     // Footer is done as raw html, this could be changed 

@@ -349,7 +349,23 @@ footer{
     line-height: 1.25;
 }
 
+/* Leaderboard */
 
+#first{
+    font-size: xx-large;
+}
+.second_third{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+#second{
+    display: flex;
+}
+#third{
+    display: flex;
+}
 
 @font-face {
     font-family: Splatoon;
