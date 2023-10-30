@@ -10,7 +10,10 @@ function loadinfo(location, page){
 }
 var gallary = [
     {header: "Header 1", image: "images/background.png", text:'This is a test, I hope this works, please work I am begging you!'},
-    {header: "Header 2", image: "", text:'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'}
+    {header: "Manage Items!", image: "images/gallary/inv.png", text:'Colect Items to fight against the salmons!'},
+    {header: "Splat Lessers", image: "images/gallary/lesser.png", text:'Fight lesser salmons to get Power Eggs!'},
+    {header: "Splat the Big Boss!", image: "images/gallary/boss.png", text:'Fight boss salmons to get Golden Eggs!'},
+    {header: "Splat the giant King!", image: "images/gallary/king.png", text:'Fight lesser salmons to get Scales!'}
 ]
 
 var nav_buttons = [
