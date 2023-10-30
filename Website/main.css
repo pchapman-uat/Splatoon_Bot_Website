@@ -213,7 +213,7 @@ footer{
     margin-right: var(--margin_lr);
     margin-left: var(--margin_lr);
 
-    height: 750px;
+    height: 600px;
     background-color: var(--Light_BG);
     border-radius: 50px;
     justify-content: space-between;
@@ -239,13 +239,6 @@ footer{
     flex-direction: column;
     justify-content: space-between;
 }
-
-#gall_header{
-    font-family: Splatoon;
-    font-size: 60px;
-    height: 25%;
-    /* background-color: greenyellow; */
-}
 .gall_txt{
     background-color: var(--Light_BG);
     padding-left: 5%;
@@ -254,8 +247,17 @@ footer{
     height: 85%;
 }
 
+#gall_header{
+    font-family: Splatoon;
+    font-size: 55px;
+    height: 25%;
+    /* background-color: greenyellow; */
+}
+
+
 #gall_about {
-    font-size: 40px;
+    font-size: 35px;
+    padding-top: 2%;
 }
 
 .gall_button{
