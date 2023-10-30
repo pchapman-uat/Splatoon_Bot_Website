@@ -13,8 +13,8 @@ var gallary = [
     {header: "Splat the Big Boss!", image: "images/gallary/boss.png", text:'Fight boss salmons to get Golden Eggs!'},
     {header: "Splat the giant King!", image: "images/gallary/king.png", text:'Fight lesser salmons to get Scales!'},
     {header: "Manage Items!", image: "images/gallary/inv.png", text:'Colect Items to fight against the salmons!'},
-    {header: "Leaderboard", image: "", text: "Collect power eggs and climb the leaderboard"},
-    {header: "Events!", image: "", text: "Look out for events! Try and get as many points by chatting, and work for your team durring a splatfest!"}   
+    {header: "Leaderboard", image: "images/gallary/leaderboard.png", text: "Collect power eggs and climb the leaderboard"},
+    {header: "Events!", image: "images/gallary/event_leaderboard.png", text: "Look out for events! Try and get as many points by chatting, and work for your team durring a splatfest!"}   
 ]
 
 var nav_buttons = [
