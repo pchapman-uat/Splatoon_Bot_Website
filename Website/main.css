@@ -89,6 +89,7 @@ footer{
     padding-bottom: 30px;
     margin-bottom: 20px;
     text-align: center;
+    font-size: xx-large;
 }
 
 .rounded{
@@ -250,7 +251,7 @@ footer{
 }
 
 #gall_about {
-    font-size: 25px;
+    font-size: 40px;
 }
 
 .gall_button{

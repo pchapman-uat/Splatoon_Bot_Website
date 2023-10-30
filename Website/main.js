@@ -171,6 +171,6 @@ function loadFooter(){
     // Footer is done as raw html, this could be changed 
     document.getElementById("footer").innerHTML=`
     Splatoon is a Game francise owned by <a target="_blank" href="https://www.nintendo.com/">Nintendo</a>©, this website is a fan project to recreate the features of Splatoon with a discord bot. <br>
-    All images are owned by <a target="_blank" href="https://www.nintendo.com/">Nintendo</a>©, unless specified otherwirse in <a href="documentation.html">documentation</a> <br> <a href="https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/git_hub_viewer.html">GitHub Home</a>
+    All images are owned by <a target="_blank" href="https://www.nintendo.com/">Nintendo</a>©, unless specified otherwirse in <a href="documentation.html">documentation</a>
     `
 }
