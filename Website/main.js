@@ -9,7 +9,6 @@ function loadinfo(location, page){
     }
 }
 var gallary = [
-    {header: "Header 1", image: "images/background.png", text:'This is a test, I hope this works, please work I am begging you!'},
     {header: "Manage Items!", image: "images/gallary/inv.png", text:'Colect Items to fight against the salmons!'},
     {header: "Splat Lessers", image: "images/gallary/lesser.png", text:'Fight lesser salmons to get Power Eggs!'},
     {header: "Splat the Big Boss!", image: "images/gallary/boss.png", text:'Fight boss salmons to get Golden Eggs!'},
@@ -55,7 +54,9 @@ var ani_duration = 1
 function set_gallary(frame){
     document.getElementById("gall_header").innerHTML = gallary[frame].header
     document.getElementById("gall_about").innerHTML= gallary[frame].text
-    document.getElementById("gall_img").style.backgroundImage = `url(${gallary[frame].image})`
+    let img = document.getElementById("gall_img2")
+    img.setAttribute("src", `${gallary[frame].image}`)
+    // document.getElementById("gall_img").style.backgroundImage = `url(${gallary[frame].image})`
 }
 
 function change_frame(frame){

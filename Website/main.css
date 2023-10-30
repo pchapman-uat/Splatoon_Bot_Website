@@ -221,10 +221,14 @@ footer{
 
 
 #gall_img{
-    border-radius: 20px;
     margin: 3%;
     width: 30%;
-    background-color: red;
+    display: flex;
+}
+
+#gall_img2{
+    border-radius: 20px;
+    height: auto;
 }
 
 .gall_info{
