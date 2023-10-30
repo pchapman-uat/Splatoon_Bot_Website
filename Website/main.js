@@ -7,6 +7,7 @@ function loadinfo(location, page){
     } else if(page="images"){
         loadsalmon()
     }
+    console.log(document.URL)
 }
 var gallary = [
     {header: "Header 1", image: "images/background.png", text:'This is a test, I hope this works, please work I am begging you!'},
