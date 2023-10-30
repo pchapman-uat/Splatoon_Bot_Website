@@ -124,12 +124,7 @@ function loadnav(location){
     nav_image.setAttribute("class", "home_img")
     var url = document.URL
 
-    if(url.includes("github")){
-        nav_image.setAttribute("href", "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html")
-    } else{
-      nav_image.setAttribute("href", "home.html")  
-    }
-    
+
     parent.appendChild(nav_image)
 
     var image = document.createElement("img")
@@ -142,11 +137,12 @@ function loadnav(location){
     nav_items.setAttribute("id", "items")
     parent.appendChild(nav_items)
     
-     
     if(url.includes("github")){
+        nav_image.setAttribute("href", "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html")
         createbuttons("items", git_buttons, location)
-    } else {
-       createbuttons("items", nav_buttons, location) 
+    } else{
+      nav_image.setAttribute("href", "home.html")
+      createbuttons("items", nav_buttons, location)  
     }
 }
 
