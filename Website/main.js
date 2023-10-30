@@ -7,8 +7,6 @@ function loadinfo(location, page){
     } else if(page="images"){
         loadsalmon()
     }
-
-    
 }
 var gallary = [
     {header: "Header 1", image: "images/background.png", text:'This is a test, I hope this works, please work I am begging you!'},
@@ -114,14 +112,16 @@ function createbuttons(parent, array, location){
     }
 }
 
-function loadnav(location , git){
+function loadnav(location){
     //<a class="home_img" href="home.html"><img id="svgImage" src="home.svg" width="40px"></a> 
     var parent = document.getElementById("nav")
 
 
     var nav_image = document.createElement("a")
     nav_image.setAttribute("class", "home_img")
-    if(git){
+    var url = document.URL
+
+    if(url.includes("github")){
         nav_image.setAttribute("href", "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html")
     } else{
       nav_image.setAttribute("href", "home.html")  
@@ -139,7 +139,8 @@ function loadnav(location , git){
     nav_items.setAttribute("id", "items")
     parent.appendChild(nav_items)
     
-    if(git){
+     
+    if(url.includes("github")){
         createbuttons("items", git_buttons, location)
     } else {
        createbuttons("items", nav_buttons, location) 
