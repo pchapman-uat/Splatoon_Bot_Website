@@ -53,10 +53,11 @@ var images = [
 ]
 
 var leaderboard = [
-    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 600},
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 0},
     {name: "Banana", avatar: "", score: 500},
     {name: "Poison", avatar: "", score: 700},
-    {name: "Agent T", avatar: "", score: 200}
+    {name: "Agent T", avatar: "", score: 200},
+    {name: "John Doe", avatar:"", score: 900}
 ]
 // Duration in seconds
 var ani_duration = 1
@@ -187,7 +188,24 @@ function load_leaderboard(){
         if(i >= places.length){
             console.log("Remaining")
             let parent = document.getElementById("remaining")
-            parent.innerHTML = parent.innerHTML + "<br>" + leaderboard[i].name
+            var table_row = document.createElement("tr")
+            
+            let avatar = document.createElement("td")
+            let image = document.createElement("img")
+            image.setAttribute("src", `${leaderboard[i].avatar}`)
+            avatar.appendChild(image)
+            table_row.appendChild(avatar)
+            
+            let name = document.createElement("td")
+            name.innerHTML = `${leaderboard[i].name}`
+            table_row.appendChild(name)
+
+            let score = document.createElement("td")
+            score.innerHTML = `${leaderboard[i].score}`
+            table_row.appendChild(score)
+           
+            parent.appendChild(table_row)
+
         } else {
             console.log(places[i])
             let parent = document.getElementById(places[i])
