@@ -175,6 +175,20 @@ function nav_color(page){
 
 
 }
+function ordinal_suffix_of(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
 
 function load_leaderboard(){
     console.log("Loading leaderboard")
@@ -190,9 +204,18 @@ function load_leaderboard(){
             let parent = document.getElementById("remaining")
             var table_row = document.createElement("tr")
             
+            let place = document.createElement("td")
+            place.innerHTML = ordinal_suffix_of(i)
+            table_row.appendChild(place)
+
             let avatar = document.createElement("td")
             let image = document.createElement("img")
-            image.setAttribute("src", `${leaderboard[i].avatar}`)
+            if(leaderboard[i].avatar === ""){
+                image.setAttribute("src", `images/leaderboard/default.png`)
+            } else {
+                image.setAttribute("src", `${leaderboard[i].avatar}`)
+            }
+           
             avatar.appendChild(image)
             table_row.appendChild(avatar)
             
@@ -209,10 +232,24 @@ function load_leaderboard(){
         } else {
             console.log(places[i])
             let parent = document.getElementById(places[i])
+            
             let name = document.createElement("div")
             name.setAttribute("id", `${places[i]}_txt`)
             name.innerHTML = leaderboard[i].name
             parent.appendChild(name)
+
+            let img = document.createElement("img")
+            if(leaderboard[i].avatar === ""){
+                img.setAttribute("src", `images/leaderboard/default.png`)
+            } else {
+                img.setAttribute("src", `${leaderboard[i].avatar}`)
+            }
+            parent.appendChild(img)
+
+            let score = document.createElement("div")
+            score.setAttribute("id", `${places[i].name}_score`)
+            score.innerHTML = leaderboard[i].score
+            parent.appendChild(score)
         }
     }
 }

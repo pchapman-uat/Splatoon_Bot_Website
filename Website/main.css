@@ -352,8 +352,23 @@ footer{
 /* Leaderboard */
 
 #first{
+    padding: 1%;
+    --lr_margin: 45%;
+    margin-left: var(--lr_margin);
+    margin-right: var(--lr_margin);
     font-size: xx-large;
-    text-align: center;
+    background-color: gold;
+    border-radius: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#first img{
+    --size: 80px;
+    border-radius: 100%;
+    width: var(--size);
+    height: var(--size);
 }
 .second_third{
     --lr_margin: 35%;
@@ -363,8 +378,36 @@ footer{
     margin-right: var(--lr_margin);
 
 }
+#first, #second, #third{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-table, th, td  {
+#second, #third{
+    padding: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 500px;
+    font-size: x-large;
+}
+
+#second img, #third img{
+    --size: 60px;
+    border-radius: 100%;
+    width: var(--size);
+    height: var(--size);
+}
+#second{
+    background-color: silver;
+}
+
+#third{
+    background-color: rgb(199, 96, 0);
+}
+
+
+#remaining, #remaining th, #remaining td  {
     border: 1px solid rgb(114, 114, 114);
     border-collapse: collapse;
     margin-left: auto;
