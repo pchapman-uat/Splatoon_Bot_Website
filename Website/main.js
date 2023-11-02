@@ -4,8 +4,10 @@ function loadinfo(location, page){
     nav_color(page)
     if(page === "home"){
         set_gallary(0)
-    } else if(page="images"){
+    } else if(page === "images"){
         loadsalmon()
+    } else if(page === "leaderboard"){
+        load_leaderboard()
     }
 }
 var gallary = [
@@ -50,6 +52,13 @@ var images = [
     {name: "Horrorboros", image: "https://media.discordapp.net/attachments/1142680467825500264/1145209514153480283/S3_Horrorboros_icon.png?width=800&height=800"},
 ]
 
+var leaderboard = [
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 0},
+    {name: "Banana", avatar: "", score: 500},
+    {name: "Poison", avatar: "", score: 700},
+    {name: "Agent T", avatar: "", score: 200},
+    {name: "John Doe", avatar:"", score: 900}
+]
 // Duration in seconds
 var ani_duration = 1
 
@@ -165,6 +174,84 @@ function nav_color(page){
     }
 
 
+}
+function ordinal_suffix_of(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
+function load_leaderboard(){
+    console.log("Loading leaderboard")
+    leaderboard.sort((a, b) => Number(b.score) - Number(a.score))
+    console.log(leaderboard)
+    let places = ["first", "second", "third"]
+    for(i in leaderboard){
+        console.log("adding element")
+        console.log(i)
+        console.log(places.length)
+        if(i >= places.length){
+            console.log("Remaining")
+            let parent = document.getElementById("remaining")
+            var table_row = document.createElement("tr")
+            
+            let place = document.createElement("td")
+            place.innerHTML = ordinal_suffix_of(i)
+            table_row.appendChild(place)
+
+            let avatar = document.createElement("td")
+            let image = document.createElement("img")
+            if(leaderboard[i].avatar === ""){
+                image.setAttribute("src", `images/leaderboard/default.png`)
+            } else {
+                image.setAttribute("src", `${leaderboard[i].avatar}`)
+            }
+           
+            avatar.appendChild(image)
+            table_row.appendChild(avatar)
+            
+            let name = document.createElement("td")
+            name.innerHTML = `${leaderboard[i].name}`
+            table_row.appendChild(name)
+
+            let score = document.createElement("td")
+            score.innerHTML = `${leaderboard[i].score}`
+            table_row.appendChild(score)
+           
+            parent.appendChild(table_row)
+
+        } else {
+            console.log(places[i])
+            let parent = document.getElementById(places[i])
+            
+            let name = document.createElement("div")
+            name.setAttribute("id", `${places[i]}_txt`)
+            name.innerHTML = leaderboard[i].name
+            parent.appendChild(name)
+
+            let img = document.createElement("img")
+            if(leaderboard[i].avatar === ""){
+                img.setAttribute("src", `images/leaderboard/default.png`)
+            } else {
+                img.setAttribute("src", `${leaderboard[i].avatar}`)
+            }
+            parent.appendChild(img)
+
+            let score = document.createElement("div")
+            score.setAttribute("id", `${places[i].name}_score`)
+            score.innerHTML = leaderboard[i].score
+            parent.appendChild(score)
+        }
+    }
 }
 function loadFooter(){
     // Footer is done as raw html, this could be changed 
