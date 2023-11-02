@@ -205,7 +205,7 @@ function load_leaderboard(){
             var table_row = document.createElement("tr")
             
             let place = document.createElement("td")
-            place.innerHTML = ordinal_suffix_of(i)
+            place.innerHTML = ordinal_suffix_of(Number(i)+1)
             table_row.appendChild(place)
 
             let avatar = document.createElement("td")
