@@ -357,7 +357,7 @@ footer{
     margin-left: var(--lr_margin);
     margin-right: var(--lr_margin);
     font-size: xx-large;
-    background-color: gold;
+    background-color: rgba(255, 217, 0, 0.75);
     border-radius: 500px;
     display: flex;
     flex-direction: column;
@@ -404,20 +404,24 @@ footer{
 }
 
 #second{
-    background-color: silver;
+    background-color: rgba(192, 192, 192, 0.75);
 }
 
 #third{
-    background-color: rgb(199, 96, 0);
+    background-color: rgba(199, 96, 0, 0.75);
 }
 
-
-#remaining, #remaining th, #remaining td  {
+#remaining{
+    background-color: var(--Light_BG);
+    border-radius: 500px;
+    --lr_padding: 2%;
+    padding-left: var(--lr_padding);
+    padding-right: var(--lr_padding);
     margin-left: auto;
     margin-right: auto;
 }
 
-#remaining th, #remaining td{
+#remaining th, #remaining td{   
     padding: 20px;
     font-size: x-large;
     
