@@ -36,12 +36,14 @@ var nav_buttons = [
     {name: "How To", id: "how_to", file: "how_to.html"},
     {name: "Commands", id: "commands", file: 'commands.html'},
     {name: "Documentation", id: "documentation", file:"documentation.html"},
+    {name: "Leaderboard", id: "leaderboard", file: "leaderboard.html"},
     {name: "Invite", id: "invite", file:"invite.html"}
 ]
 var git_buttons = [
     {name: "How To", id: "how_to", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/how_to.html"},
     {name: "Commands", id: "commands", file: 'https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/commands.html'},
     {name: "Documentation", id: "documentation", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/documentation.html"},
+    {name: "Leaderboard", id: "leaderboard", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/leaderboard.html"},
     {name: "Invite", id: "invite", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/invite.html"}
 ]
 
