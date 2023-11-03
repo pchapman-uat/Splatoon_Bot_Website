@@ -4,10 +4,25 @@ function loadinfo(location, page){
     nav_color(page)
     if(page === "home"){
         set_gallary(0)
-    } else if(page="images"){
+    } else if(page === "images"){
         loadsalmon()
+    } else if(page === "leaderboard"){
+        load_leaderboard(leaderboard)
     }
 }
+
+function test(){
+    let button = document.getElementById("leader_check")
+    console.log(button.checked)
+
+    if(button.checked){
+        change_leaderboard(splatfest)
+    } else {
+        change_leaderboard(leaderboard)
+    }
+    
+}
+
 var gallary = [
     {header: "Splat Lessers", image: "images/gallary/lesser.png", text:'Fight lesser salmons to get Power Eggs!'},
     {header: "Splat the Big Boss!", image: "images/gallary/boss.png", text:'Fight boss salmons to get Golden Eggs!'},
@@ -21,12 +36,14 @@ var nav_buttons = [
     {name: "How To", id: "how_to", file: "how_to.html"},
     {name: "Commands", id: "commands", file: 'commands.html'},
     {name: "Documentation", id: "documentation", file:"documentation.html"},
+    {name: "Leaderboard", id: "leaderboard", file: "leaderboard.html"},
     {name: "Invite", id: "invite", file:"invite.html"}
 ]
 var git_buttons = [
     {name: "How To", id: "how_to", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/how_to.html"},
     {name: "Commands", id: "commands", file: 'https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/commands.html'},
     {name: "Documentation", id: "documentation", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/documentation.html"},
+    {name: "Leaderboard", id: "leaderboard", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/leaderboard.html"},
     {name: "Invite", id: "invite", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/invite.html"}
 ]
 
@@ -50,6 +67,21 @@ var images = [
     {name: "Horrorboros", image: "https://media.discordapp.net/attachments/1142680467825500264/1145209514153480283/S3_Horrorboros_icon.png?width=800&height=800"},
 ]
 
+var leaderboard = [
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 0},
+    {name: "Banana", avatar: "", score: 500},
+    {name: "Poison", avatar: "", score: 700},
+    {name: "Agent T", avatar: "", score: 200},
+    {name: "John Doe", avatar:"", score: 900}
+]
+
+var splatfest = [
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 500},
+    {name: "Banana", avatar: "", score: 600},
+    {name: "Poison", avatar: "", score: 100},
+    {name: "Agent T", avatar: "", score: 200},
+    {name: "John Doe", avatar:"", score: 400}
+]
 // Duration in seconds
 var ani_duration = 1
 
@@ -60,6 +92,8 @@ function set_gallary(frame){
     img.setAttribute("src", `${gallary[frame].image}`)
     // document.getElementById("gall_img").style.backgroundImage = `url(${gallary[frame].image})`
 }
+
+var places = ["first", "second", "third"]
 
 function change_frame(frame){
     if(frame < 0) {
@@ -166,6 +200,120 @@ function nav_color(page){
 
 
 }
+function ordinal_suffix_of(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
+}
+
+function leader_table(array, i){
+    console.log("Remaining")
+    let parent = document.getElementById("remaining")
+    let table_row = document.createElement("tr")
+    
+    let place = document.createElement("td")
+    place.innerHTML = ordinal_suffix_of(Number(i)+1)
+    table_row.appendChild(place)
+
+    let avatar = document.createElement("td")
+    let image = document.createElement("img")
+    if(array[i].avatar === ""){
+        image.setAttribute("src", `images/leaderboard/default.png`)
+    } else {
+        image.setAttribute("src", `${array[i].avatar}`)
+    }
+   
+    avatar.appendChild(image)
+    table_row.appendChild(avatar)
+    
+    let name = document.createElement("td")
+    name.innerHTML = `${array[i].name}`
+    table_row.appendChild(name)
+
+    let score = document.createElement("td")
+    score.innerHTML = `${array[i].score}`
+    table_row.appendChild(score)
+   
+    parent.appendChild(table_row)
+}
+function load_leaderboard(array){
+    let table = document.getElementById("remaining")
+    table.innerHTML = ""
+    console.log("Loading leaderboard")
+    array.sort((a, b) => Number(b.score) - Number(a.score))
+    console.log(array)
+    for(i in array){
+        console.log("adding element")
+        console.log(i)
+        console.log(places.length)
+        if(i >= places.length){
+         leader_table(array, i)
+        } else {
+            console.log(places[i])
+            let parent = document.getElementById(places[i])
+            
+            let name = document.createElement("div")
+            name.setAttribute("id", `${places[i]}_txt`)
+            name.innerHTML = array[i].name
+            parent.appendChild(name)
+
+            let img = document.createElement("img")
+            img.setAttribute("id", `${places[i]}_img`)
+            if(array[i].avatar === ""){
+                img.setAttribute("src", `images/leaderboard/default.png`)
+            } else {
+                img.setAttribute("src", `${array[i].avatar}`)
+            }
+            parent.appendChild(img)
+
+            let score = document.createElement("div")
+            score.setAttribute("id", `${places[i]}_score`)
+            score.innerHTML = array[i].score
+            parent.appendChild(score)
+        }
+    }
+}
+
+function change_leaderboard(array){
+    let mode = document.getElementById("mode")
+    if(mode.innerHTML === "Power Eggs"){
+        mode.innerHTML = "Splatfest Points"
+    } else {
+        mode.innerHTML = "Power Eggs"
+    }
+    let table = document.getElementById("remaining")
+    table.innerHTML = ""
+    array.sort((a, b) => Number(b.score) - Number(a.score))
+    for(i in array){
+
+        if(i >= places.length){
+            leader_table(array, i)
+        } else {
+            let name = document.getElementById(`${places[i]}_txt`)
+            name.innerHTML = array[i].name
+            
+            let avatar = document.getElementById(`${places[i]}_img`)
+            if(array[i].avatar === ""){
+                avatar.setAttribute("src", `images/leaderboard/default.png`)
+            } else {
+                avatar.setAttribute("src", `${array[i].avatar}`)
+            }
+    
+            let score = document.getElementById(`${places[i]}_score`)
+            score.innerHTML = array[i].score
+        }
+    }
+}
+
 function loadFooter(){
     // Footer is done as raw html, this could be changed 
     document.getElementById("footer").innerHTML=`

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body onload="loadinfo('', 'leaderboard')">
+    <nav id="nav">
+
+    </nav>
+    <div class="title">
+        <h1 class="title_txt shadow">
+            Leaderboard
+            
+        </h1>
+        <div class="desc">
+            This is the leaderboard of <span id="mode">Power Eggs</span>
+        </div>
+    </div>
+
+    <div class="center-container">
+        <label class="switch">
+            <input type="checkbox" id="leader_check" onchange="test()">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="leaderboard">
+        <div class="center-container">
+            <div id="first">
+
+            </div>
+        </div>
+        <div class="second_third">
+            <div id="second">
+            </div>
+            <div id="third">
+            </div>
+        </div>
+        <table id="remaining">
+        </table>
+    </div>
+    <footer class="rounded" id="footer">
+
+    </footer>
+</body>
+</html>

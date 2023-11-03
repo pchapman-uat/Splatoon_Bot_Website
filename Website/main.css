@@ -42,7 +42,7 @@ h1{
 
 nav{
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    border-radius: 25px;
     font-size: xx-large;
     padding: 0.75%;
     display: flex;
@@ -349,6 +349,164 @@ footer{
     line-height: 1.25;
 }
 
+/* Leaderboard */
+
+#first{
+    margin-top: 3%;
+    padding: 1%;
+    font-size: xx-large;
+    background-color: rgba(255, 217, 0, 0.75);
+    border-radius: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --lr_padding: 3%;
+    padding-right: var(--lr_padding);
+    padding-left: var(--lr_padding);
+}
+
+#first img{
+    --size: 80px;
+    border-radius: 100%;
+    width: var(--size);
+    height: var(--size);
+}
+.second_third{
+    --lr_margin: 35%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: var(--lr_margin);
+    margin-right: var(--lr_margin);
+
+}
+#first, #second, #third{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#second, #third{
+    padding: 2%;
+    --lr_padding: 8%;
+    padding-left: var(--lr_padding);
+    padding-right: var(--lr_padding);
+    border-radius: 200px;
+    font-size: x-large;
+}
+
+#second img, #third img{
+    --size: 60px;
+    border-radius: 100%;
+    width: var(--size);
+    height: var(--size);
+}
+
+#first img, #second img, #third img{
+    padding: 5%;
+}
+
+#second{
+    background-color: rgba(192, 192, 192, 0.75);
+}
+
+#third{
+    background-color: rgba(199, 96, 0, 0.75);
+}
+
+#remaining{
+    margin-top: 50px;
+    background-color: var(--Light_BG);
+    border-radius: 500px;
+    --lr_padding: 2%;
+    padding-left: var(--lr_padding);
+    padding-right: var(--lr_padding);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#remaining th, #remaining td{   
+    padding: 20px;
+    font-size: x-large;
+    
+}
+
+#remaining tr td img{
+    --size: 60px;
+    border-radius: 100%;
+    width: var(--size);
+    height: var(--size);
+}
+
+/* Slider provided by W3 Schools */
+/* The switch - the box around the slider */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* You can also set a specific width if needed */
+    /* width: 100%; */
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
 
 
 @font-face {
