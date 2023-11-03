@@ -7,15 +7,20 @@ function loadinfo(location, page){
     } else if(page === "images"){
         loadsalmon()
     } else if(page === "leaderboard"){
-        load_leaderboard()
-
-        let leader = document.getElementById("leader_check")
-        leader.addEventListener("onchange", test())
+        load_leaderboard(leaderboard)
     }
 }
 
 function test(){
-    console.log("IT WORKED!")
+    let button = document.getElementById("leader_check")
+    console.log(button.checked)
+
+    if(button.checked){
+        change_leaderboard(splatfest)
+    } else {
+        change_leaderboard(leaderboard)
+    }
+    
 }
 
 var gallary = [
@@ -67,6 +72,14 @@ var leaderboard = [
     {name: "Agent T", avatar: "", score: 200},
     {name: "John Doe", avatar:"", score: 900}
 ]
+
+var splatfest = [
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 500},
+    {name: "Banana", avatar: "", score: 600},
+    {name: "Poison", avatar: "", score: 100},
+    {name: "Agent T", avatar: "", score: 200},
+    {name: "John Doe", avatar:"", score: 400}
+]
 // Duration in seconds
 var ani_duration = 1
 
@@ -77,6 +90,8 @@ function set_gallary(frame){
     img.setAttribute("src", `${gallary[frame].image}`)
     // document.getElementById("gall_img").style.backgroundImage = `url(${gallary[frame].image})`
 }
+
+var places = ["first", "second", "third"]
 
 function change_frame(frame){
     if(frame < 0) {
@@ -198,69 +213,105 @@ function ordinal_suffix_of(i) {
     return i + "th";
 }
 
-function load_leaderboard(){
+function leader_table(array, i){
+    console.log("Remaining")
+    let parent = document.getElementById("remaining")
+    let table_row = document.createElement("tr")
+    
+    let place = document.createElement("td")
+    place.innerHTML = ordinal_suffix_of(Number(i)+1)
+    table_row.appendChild(place)
+
+    let avatar = document.createElement("td")
+    let image = document.createElement("img")
+    if(array[i].avatar === ""){
+        image.setAttribute("src", `images/leaderboard/default.png`)
+    } else {
+        image.setAttribute("src", `${array[i].avatar}`)
+    }
+   
+    avatar.appendChild(image)
+    table_row.appendChild(avatar)
+    
+    let name = document.createElement("td")
+    name.innerHTML = `${array[i].name}`
+    table_row.appendChild(name)
+
+    let score = document.createElement("td")
+    score.innerHTML = `${array[i].score}`
+    table_row.appendChild(score)
+   
+    parent.appendChild(table_row)
+}
+function load_leaderboard(array){
+    let table = document.getElementById("remaining")
+    table.innerHTML = ""
     console.log("Loading leaderboard")
-    leaderboard.sort((a, b) => Number(b.score) - Number(a.score))
-    console.log(leaderboard)
-    let places = ["first", "second", "third"]
-    for(i in leaderboard){
+    array.sort((a, b) => Number(b.score) - Number(a.score))
+    console.log(array)
+    for(i in array){
         console.log("adding element")
         console.log(i)
         console.log(places.length)
         if(i >= places.length){
-            console.log("Remaining")
-            let parent = document.getElementById("remaining")
-            var table_row = document.createElement("tr")
-            
-            let place = document.createElement("td")
-            place.innerHTML = ordinal_suffix_of(Number(i)+1)
-            table_row.appendChild(place)
-
-            let avatar = document.createElement("td")
-            let image = document.createElement("img")
-            if(leaderboard[i].avatar === ""){
-                image.setAttribute("src", `images/leaderboard/default.png`)
-            } else {
-                image.setAttribute("src", `${leaderboard[i].avatar}`)
-            }
-           
-            avatar.appendChild(image)
-            table_row.appendChild(avatar)
-            
-            let name = document.createElement("td")
-            name.innerHTML = `${leaderboard[i].name}`
-            table_row.appendChild(name)
-
-            let score = document.createElement("td")
-            score.innerHTML = `${leaderboard[i].score}`
-            table_row.appendChild(score)
-           
-            parent.appendChild(table_row)
-
+         leader_table(array, i)
         } else {
             console.log(places[i])
             let parent = document.getElementById(places[i])
             
             let name = document.createElement("div")
             name.setAttribute("id", `${places[i]}_txt`)
-            name.innerHTML = leaderboard[i].name
+            name.innerHTML = array[i].name
             parent.appendChild(name)
 
             let img = document.createElement("img")
-            if(leaderboard[i].avatar === ""){
+            img.setAttribute("id", `${places[i]}_img`)
+            if(array[i].avatar === ""){
                 img.setAttribute("src", `images/leaderboard/default.png`)
             } else {
-                img.setAttribute("src", `${leaderboard[i].avatar}`)
+                img.setAttribute("src", `${array[i].avatar}`)
             }
             parent.appendChild(img)
 
             let score = document.createElement("div")
-            score.setAttribute("id", `${places[i].name}_score`)
-            score.innerHTML = leaderboard[i].score
+            score.setAttribute("id", `${places[i]}_score`)
+            score.innerHTML = array[i].score
             parent.appendChild(score)
         }
     }
 }
+
+function change_leaderboard(array){
+    let mode = document.getElementById("mode")
+    if(mode.innerHTML === "Power Eggs"){
+        mode.innerHTML = "Splatfest Points"
+    } else {
+        mode.innerHTML = "Power Eggs"
+    }
+    let table = document.getElementById("remaining")
+    table.innerHTML = ""
+    array.sort((a, b) => Number(b.score) - Number(a.score))
+    for(i in array){
+
+        if(i >= places.length){
+            leader_table(array, i)
+        } else {
+            let name = document.getElementById(`${places[i]}_txt`)
+            name.innerHTML = array[i].name
+            
+            let avatar = document.getElementById(`${places[i]}_img`)
+            if(array[i].avatar === ""){
+                avatar.setAttribute("src", `images/leaderboard/default.png`)
+            } else {
+                avatar.setAttribute("src", `${array[i].avatar}`)
+            }
+    
+            let score = document.getElementById(`${places[i]}_score`)
+            score.innerHTML = array[i].score
+        }
+    }
+}
+
 function loadFooter(){
     // Footer is done as raw html, this could be changed 
     document.getElementById("footer").innerHTML=`
