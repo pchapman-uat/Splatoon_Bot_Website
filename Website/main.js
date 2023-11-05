@@ -177,6 +177,7 @@ function loadnav(location){
     if(url.includes("github")){
         nav_image.setAttribute("href", "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html")
         createbuttons("items", git_buttons, location)
+        alert("Warning! You viewing this on github, and it may cause issues, please notify Squibs if there is an issue")
     } else{
       nav_image.setAttribute("href", "home.html")
       createbuttons("items", nav_buttons, location)  
