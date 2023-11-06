@@ -1212,9 +1212,43 @@ module.exports={
 const splatoon3api = require("splatoon3api");
 const Splatoon3 = new splatoon3api.Client("en-GB");
 
+
 function splatoontest(){
     Splatoon3.getStages(res => {
-        console.log(res);
+        console.log(res)
+
+        Splatoon3.getSalmonRun(sal =>{
+            console.log(sal)
+            let modes = [
+                {Display_Name: "Turf War", name: "turf", api: res.regular[0], stages: 2},
+                {Display_Name: "Anarchy Open", name: "open", api: res.ranked[0].open, stages: 2},
+                {Display_Name: "Anarchy Series", name: "series", api: res.ranked[0].series, stages: 2},
+                {Display_Name: "X Battle", name: "xbattle", api: res.xbattle[0], stages: 2},
+                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[0], stages: 1}
+            ]
+    
+            for(i in modes){
+                for(let j = 0; j < modes[i].stages; j++){
+                    console.log(Number(j)+1)
+                    let stage = document.getElementById(`${modes[i].name}_stage${Number(j)+1}`)
+                    if(j === 0){
+                        if(modes[i].stages === 1){
+                            var data = modes[i].api.stage
+                        } else {
+                            var data = modes[i].api.stage1
+                        }
+                        
+                    } else{
+                        var data = modes[i].api.stage2
+                    }
+                    stage.setAttribute("src", data.image)
+                    
+                }
+                console.log(i)
+            }
+        })
+        
+
       });
 }
 exports.splatoontest = splatoontest;
