@@ -1230,7 +1230,7 @@ function splatoontest(){
             for(i in modes){
                 for(let j = 0; j < modes[i].stages; j++){
                     console.log(Number(j)+1)
-                    let stage = document.getElementById(`${modes[i].name}_stage${Number(j)+1}`)
+                    let stage = document.getElementById(`${modes[i].name}${Number(j)+1}`)
                     if(j === 0){
                         if(modes[i].stages === 1){
                             var data = modes[i].api.stage
@@ -1241,6 +1241,60 @@ function splatoontest(){
                     } else{
                         var data = modes[i].api.stage2
                     }
+
+                    let mode = document.getElementById(`${modes[i].name}${Number(j)+1}`)
+
+                    if(mode){
+
+                        // Load Image
+                        let image = document.createElement("img")
+                        image.setAttribute("class", "stage_img")
+                        image.setAttribute("id", `${modes[i].name}_stage${Number(j)+1}`)
+                        image.setAttribute("src", `${data.image}`)
+                        mode.appendChild(image)
+                        
+                        // Load Name
+                        let name = document.createElement("div")
+                        name.setAttribute("class", "name")
+                        name.innerHTML = data.name
+                        mode.appendChild(name)
+
+                        // Load Times
+
+                        /*
+                        <div class="times">
+                            <div class="start">
+                                Start
+                            </div> 
+                            <div class="end">
+                                End
+                            </div> 
+                        </div> 
+                        */
+
+                        let date_options = {weekday: 'long', year: 'numeric', month:'short', day:'numeric' }
+                        
+                        let times = document.createElement("div")
+                        times.setAttribute("class", "times")
+
+                        let start = document.createElement("div")
+                        start.setAttribute("class", "start")
+                        start.innerHTML = new Date(modes[i].api.start_time).toLocaleDateString('en-us', date_options)
+
+                        let end = document.createElement("div")
+                        end.setAttribute("class", "end")
+                        end.innerHTML = new Date(modes[i].api.end_time).toLocaleDateString('en-us', date_options)
+
+                        times.appendChild(start)
+                        times.appendChild(end)
+
+                        mode.appendChild(times)
+
+                    }else{
+                        console.log(`${modes[i].name} image ${j} div not found`)
+                    }
+                    
+
                     stage.setAttribute("src", data.image)
                     
                 }

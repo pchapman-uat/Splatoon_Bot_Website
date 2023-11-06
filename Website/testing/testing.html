@@ -7,34 +7,44 @@
     <script src="bundle.js"></script>
     <title>TESTING</title>
 </head>
-<body id="page-body">
-    <button onclick="Test.splatoontest()">
+<body id="page-body" onload="Test.splatoontest()">
+    <button>
         test
     </button>
     <br>
     <div class="rotation">
         <div class="normal">
-            <div class="turf">
-                <img class="stage_img" id="turf_stage1" src="../Placeholder-16x9-1.jpg">
-                <img class="stage_img" id="turf_stage2" src="../Placeholder-16x9-1.jpg">
-            </div>
-            <div class="ranked">
-                <div class="open">
-                    <img class="stage_img" id="open_stage1" src="../Placeholder-16x9-1.jpg">
-                    <img class="stage_img" id="open_stage2" src="../Placeholder-16x9-1.jpg">
+            <div class="section turf">
+                <div id="turf1">
                 </div>
-                <div class="series">
-                    <img class="stage_img" id="series_stage1" src="../Placeholder-16x9-1.jpg">
-                    <img class="stage_img" id="series_stage2" src="../Placeholder-16x9-1.jpg">
+                <div id="turf2"> 
                 </div>
             </div>
-            <div class="xbattle">
-                <img class="stage_img" id="xbattle_stage1" src="../Placeholder-16x9-1.jpg">
-                <img class="stage_img" id="xbattle_stage2" src="../Placeholder-16x9-1.jpg">
+            <span clas="ranked">
+                <div class="section open">
+                    <div id="open1">
+                    </div>
+                    <div id="open2">
+                    </div>
+                </div>
+                <div class="section series">
+                    <div id="series1">
+                    </div>
+                    <div id="series2">
+                    </div>
+
+                </div>
+            </span>
+            <div class="section xbattle">
+                <div id="xbattle1">
+                </div>
+                <div id="xbattle2">
+                </div>
             </div>
         </div>
-        <div class="salmon">
-            <img class="stage_img" id="salmon_stage1" src="../Placeholder-16x9-1.jpg">
+        <div class="section salmon">
+            <div id="salmon1">
+            </div>
         </div>
     </div>
 </body>

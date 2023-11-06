@@ -1,0 +1,22 @@
+.rotation{
+    display: flex;
+    /* background-color: red; */
+    flex-direction: column;
+}
+.section{
+    display: flex;
+    justify-content: space-evenly;
+    /* background-color: green; */
+}
+img{
+    width: 500px;
+}
+.name{
+    text-align: center;
+    font-size: xx-large;
+}
+
+.times{
+    display: flex;
+    justify-content: space-between;
+}
