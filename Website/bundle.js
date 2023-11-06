@@ -1246,18 +1246,19 @@ function splatoontest(){
 
                     if(mode){
 
-                        // Load Image
-                        let image = document.createElement("img")
-                        image.setAttribute("class", "stage_img")
-                        image.setAttribute("id", `${modes[i].name}_stage${Number(j)+1}`)
-                        image.setAttribute("src", `${data.image}`)
-                        mode.appendChild(image)
                         
                         // Load Name
                         let name = document.createElement("div")
                         name.setAttribute("class", "name")
                         name.innerHTML = data.name
                         mode.appendChild(name)
+
+                         // Load Image
+                         let image = document.createElement("img")
+                         image.setAttribute("class", "stage_img")
+                         image.setAttribute("id", `${modes[i].name}_stage${Number(j)+1}`)
+                         image.setAttribute("src", `${data.image}`)
+                         mode.appendChild(image)
 
 
                     }else{

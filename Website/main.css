@@ -5,6 +5,9 @@
     --About_width: 200px;
 
 }
+.splatoon{
+    font-family: Splatoon;
+}
 html {
     position: relative;
     min-height: 100%;

@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="testing.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="rotation.css">
     <script src="bundle.js"></script>
+    <script src="main.js"></script>
     <title>TESTING</title>
 </head>
-<body id="page-body" onload="Test.splatoontest()">
-    <br>
-    <div class="rotation">
+<body id="page-body" onload="Test.splatoontest(), loadinfo('', 'rotation')">
+    <nav id="nav">
+
+    </nav>
+    <div class="rotation rounded">
         <div class="normal">
-            <div id="turf_header">
-                <div class="mode">
+            <div class="rot_header shadow" id="turf_header">
+                <div class="mode splatoon">
                     Turf War
                 </div>
 
@@ -24,8 +28,8 @@
                 </div>
             </div>
             <span clas="ranked">
-                <div id="open_header">
-                    <div class="mode">
+                <div class="rot_header shadow" id="open_header">
+                    <div class="mode splatoon">
                         Anarchy Open
                     </div>
                     
@@ -36,8 +40,8 @@
                     <div id="open2">
                     </div>
                 </div>
-                <div id="series_header">
-                    <div class="mode">
+                <div class="rot_header shadow" id="series_header">
+                    <div class="mode splatoon">
                         Anarchy Series
                     </div>
                 </div>
@@ -48,8 +52,8 @@
                     </div>
                 </div>
             </span>
-            <div id="xbattle_header">
-                <div class="mode">
+            <div class="rot_header shadow" id="xbattle_header">
+                <div class="mode splatoon">
                     X-Battle
                 </div>
             </div>
@@ -60,8 +64,8 @@
                 </div>
             </div>
         </div>
-        <div id="salmon_header">
-            <div class="mode">
+        <div class="rot_header shadow" id="salmon_header">
+            <div class="mode splatoon">
                 Salmon Run
             </div>
         </div>
@@ -70,5 +74,8 @@
             </div>
         </div>
     </div>
+    <footer id="footer" class="rounded">
+
+    </footer>
 </body>
 </html>

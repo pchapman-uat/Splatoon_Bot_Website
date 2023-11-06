@@ -1,15 +1,21 @@
 .rotation{
+    margin-top: 5%;
     display: flex;
     /* background-color: red; */
     flex-direction: column;
+    --lr_margin: 15%;
+    margin-left: var(--lr_margin);
+    margin-right: var(--lr_margin);
+    padding-bottom: 2%;
 }
 .section{
     display: flex;
     justify-content: space-evenly;
     /* background-color: green; */
 }
-img{
+.stage_img{
     width: 500px;
+    border-radius: 50px;
 }
 .name{
     text-align: center;
@@ -19,8 +25,8 @@ img{
 .times{
     display: flex;
     justify-content: space-between;
-    font-size: x-large;
-    --lr_margin: 35%;
+    font-size: xx-large;
+    --lr_margin: 25%;
     --tb_margin: 1%;
     padding-left: var(--lr_margin);
     padding-right: var(--lr_margin);
@@ -43,5 +49,31 @@ img{
 }
 
 .weapons img{
-    width: 10%;
+    width: 20%;
+}
+
+.rot_header{
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 3%;
+    background-repeat: no-repeat;
+    background-position-y: center;
+}
+
+#turf_header{
+    background-image: url("/images/Modes/turf_war.png");
+}
+
+#open_header, #series_header{
+    background-image: url("/images/Modes/ranked.png");
+
+}
+
+#xbattle_header{
+    background-image: url("/images/Modes/xbattle.png");
+
+}
+
+#salmon_header{
+    background-image: url("/images/Modes/salmon.png");
 }
