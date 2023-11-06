@@ -87,20 +87,20 @@ function change_frame(frame){
 
 function loadsalmon(){
     console.log("loading...")
-    var parent = document.getElementById("images")
+    let parent = document.getElementById("images")
 
     for(i in images){
-        var item = document.createElement("div")
+        let item = document.createElement("div")
         item.setAttribute("class", "item")
         parent.appendChild(item)
 
-        var img_txt = document.createElement("div")
+        let img_txt = document.createElement("div")
         img_txt.setAttribute("class", "img_txt")
         img_txt.innerHTML = images[i].name
         item.appendChild(img_txt)
 
 
-        var img = document.createElement("img")
+        let img = document.createElement("img")
         img.setAttribute("src", `${images[i].image}`)
         item.appendChild(img)
     }
@@ -112,11 +112,11 @@ function createbuttons(parent, array, location){
     console.log(array)
     console.log(location)
     // Get the element based on the ID of the provided parent
-    var parent = document.getElementById(parent)
+    let parent = document.getElementById(parent)
     // For each element in the array 
     for(i in array){
         // Create a new element for the button
-        var button = document.createElement("a")
+        let button = document.createElement("a")
         // Check if location is provided
         if(typeof location !== "undefined"){
             // Set the atribute for the button to be a reference to a different page (used for nav)
@@ -132,23 +132,23 @@ function createbuttons(parent, array, location){
 
 function loadnav(location){
     //<a class="home_img" href="home.html"><img id="svgImage" src="home.svg" width="40px"></a> 
-    var parent = document.getElementById("nav")
+    let parent = document.getElementById("nav")
 
 
-    var nav_image = document.createElement("a")
+    let nav_image = document.createElement("a")
     nav_image.setAttribute("class", "home_img")
-    var url = document.URL
+    let url = document.URL
 
 
     parent.appendChild(nav_image)
 
-    var image = document.createElement("img")
+    let image = document.createElement("img")
     image.setAttribute("id","svgImage")
     image.setAttribute("src","home.svg")
     image.setAttribute("width","50px")
     nav_image.appendChild(image)
 
-    var nav_items = document.createElement("items")
+    let nav_items = document.createElement("items")
     nav_items.setAttribute("id", "items")
     parent.appendChild(nav_items)
     
@@ -179,7 +179,7 @@ function nav_color(page){
 
 }
 function ordinal_suffix_of(i) {
-    var j = i % 10,
+    let j = i % 10,
         k = i % 100;
     if (j == 1 && k != 11) {
         return i + "st";
@@ -205,7 +205,7 @@ function load_leaderboard(){
         if(i >= places.length){
             console.log("Remaining")
             let parent = document.getElementById("remaining")
-            var table_row = document.createElement("tr")
+            let table_row = document.createElement("tr")
             
             let place = document.createElement("td")
             place.innerHTML = ordinal_suffix_of(Number(i)+1)
