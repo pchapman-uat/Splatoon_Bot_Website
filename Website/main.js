@@ -8,15 +8,9 @@ function loadinfo(location, page){
         loadsalmon()
     } else if(page === "leaderboard"){
         load_leaderboard()
-
-        let leader = document.getElementById("leader_check")
-        leader.addEventListener("onchange", test())
     }
 }
 
-function test(){
-    console.log("IT WORKED!")
-}
 
 const gallary = [
     {header: "Splat Lessers", image: "images/gallary/lesser.png", text:'Fight lesser salmons to get Power Eggs!'},
