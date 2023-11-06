@@ -1224,7 +1224,7 @@ function splatoontest(){
                 {Display_Name: "Anarchy Open", name: "open", api: res.ranked[0].open, stages: 2},
                 {Display_Name: "Anarchy Series", name: "series", api: res.ranked[0].series, stages: 2},
                 {Display_Name: "X Battle", name: "xbattle", api: res.xbattle[0], stages: 2},
-                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[0], stages: 1}
+                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[0], stages: 1, weapons: [sal.regularSchedules[0].weapons[0], sal.regularSchedules[0].weapons[1], sal.regularSchedules[0].weapons[2], sal.regularSchedules[0].weapons[3]]}
             ]
     
             for(i in modes){
@@ -1259,36 +1259,6 @@ function splatoontest(){
                         name.innerHTML = data.name
                         mode.appendChild(name)
 
-                        // Load Times
-
-                        /*
-                        <div class="times">
-                            <div class="start">
-                                Start
-                            </div> 
-                            <div class="end">
-                                End
-                            </div> 
-                        </div> 
-                        */
-
-                        let date_options = {weekday: 'long', year: 'numeric', month:'short', day:'numeric' }
-                        
-                        let times = document.createElement("div")
-                        times.setAttribute("class", "times")
-
-                        let start = document.createElement("div")
-                        start.setAttribute("class", "start")
-                        start.innerHTML = new Date(modes[i].api.start_time).toLocaleDateString('en-us', date_options)
-
-                        let end = document.createElement("div")
-                        end.setAttribute("class", "end")
-                        end.innerHTML = new Date(modes[i].api.end_time).toLocaleDateString('en-us', date_options)
-
-                        times.appendChild(start)
-                        times.appendChild(end)
-
-                        mode.appendChild(times)
 
                     }else{
                         console.log(`${modes[i].name} image ${j} div not found`)
@@ -1299,6 +1269,39 @@ function splatoontest(){
                     
                 }
                 console.log(i)
+
+                let time_parent = document.getElementById(`${modes[i].name}_header`)
+                let date_options = {hour: "numeric"}
+                
+                let times = document.createElement("div")
+                times.setAttribute("class", "times")
+
+                let start = document.createElement("div")
+                start.setAttribute("class", "start")
+                start.innerHTML = new Date(modes[i].api.start_time).toLocaleDateString('en-us', date_options)
+
+                let end = document.createElement("div")
+                end.setAttribute("class", "end")
+                end.innerHTML = new Date(modes[i].api.end_time).toLocaleDateString('en-us', date_options)
+
+                times.appendChild(start)
+                times.appendChild(end)
+
+                time_parent.appendChild(times)
+
+                if(modes[i].name === "salmon"){
+                    let weapons_box = document.createElement("div")
+                    weapons_box.setAttribute("class", "weapons")
+
+                    for(j in modes[i].weapons){                        
+                        let img = document.createElement("img")
+                        img.setAttribute("src",  `${modes[i].weapons[j].image}`)
+
+                        weapons_box.appendChild(img)
+                    }
+
+                    time_parent.appendChild(weapons_box)
+                }
             }
         })
         

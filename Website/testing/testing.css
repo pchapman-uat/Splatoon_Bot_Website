@@ -19,4 +19,29 @@ img{
 .times{
     display: flex;
     justify-content: space-between;
+    font-size: x-large;
+    --lr_margin: 35%;
+    --tb_margin: 1%;
+    padding-left: var(--lr_margin);
+    padding-right: var(--lr_margin);
+    margin-bottom: var(--tb_margin);
+    margin-top: var(--tb_margin);
+}
+
+.mode{
+    text-align: center;
+    font-size: 75px;
+}
+
+.weapons{
+    display: flex;
+    justify-content: space-evenly;
+    --lr_padding: 20%;
+    padding-left: var(--lr_padding);
+    padding-right: var(--lr_padding);
+    /* background-color: blue; */
+}
+
+.weapons img{
+    width: 10%;
 }
