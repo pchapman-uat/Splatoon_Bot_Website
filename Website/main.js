@@ -18,7 +18,7 @@ function test(){
     console.log("IT WORKED!")
 }
 
-var gallary = [
+const gallary = [
     {header: "Splat Lessers", image: "images/gallary/lesser.png", text:'Fight lesser salmons to get Power Eggs!'},
     {header: "Splat the Big Boss!", image: "images/gallary/boss.png", text:'Fight boss salmons to get Golden Eggs!'},
     {header: "Splat the giant King!", image: "images/gallary/king.png", text:'Fight lesser salmons to get Scales!'},
@@ -27,21 +27,21 @@ var gallary = [
     {header: "Events!", image: "images/gallary/event_leaderboard.png", text: "Look out for events! Try and get as many points by chatting, and work for your team durring a splatfest!"}   
 ]
 
-var nav_buttons = [
+const nav_buttons = [
     {name: "How To", id: "how_to", file: "how_to.html"},
     {name: "Commands", id: "commands", file: 'commands.html'},
     {name: "Rotation", id: "rotation", file: "rotation.html"},
     {name: "Documentation", id: "documentation", file:"documentation.html"},
     {name: "Invite", id: "invite", file:"invite.html"}
 ]
-var git_buttons = [
+const git_buttons = [
     {name: "How To", id: "how_to", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/how_to.html"},
     {name: "Commands", id: "commands", file: 'https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/commands.html'},
     {name: "Documentation", id: "documentation", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/documentation.html"},
     {name: "Invite", id: "invite", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/invite.html"}
 ]
 
-var images = [
+const images = [
     {name: "Smallfry", image: "https://media.discordapp.net/attachments/1116032437588340826/1143654495520313384/120px-S3_Smallfry_icon.png?width=240&height=240"},  
     {name: "Chum", image: "https://media.discordapp.net/attachments/1142680467825500264/1143654353014636624/120px-S3_Chum_icon.png?width=240&height=240"},  
     {name: "Cohock", image: "https://media.discordapp.net/attachments/1142680467825500264/1143654352691658792/500.png?width=884&height=884"},  
@@ -61,7 +61,7 @@ var images = [
     {name: "Horrorboros", image: "https://media.discordapp.net/attachments/1142680467825500264/1145209514153480283/S3_Horrorboros_icon.png?width=800&height=800"},
 ]
 
-var leaderboard = [
+const leaderboard = [
     {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 0},
     {name: "Banana", avatar: "", score: 500},
     {name: "Poison", avatar: "", score: 700},
@@ -69,7 +69,7 @@ var leaderboard = [
     {name: "John Doe", avatar:"", score: 900}
 ]
 // Duration in seconds
-var ani_duration = 1
+const ani_duration = 1
 
 function set_gallary(frame){
     document.getElementById("gall_header").innerHTML = gallary[frame].header
