@@ -112,7 +112,7 @@ function createbuttons(parent, array, location){
     console.log(array)
     console.log(location)
     // Get the element based on the ID of the provided parent
-    let parent = document.getElementById(parent)
+    parent = document.getElementById(parent)
     // For each element in the array 
     for(i in array){
         // Create a new element for the button
