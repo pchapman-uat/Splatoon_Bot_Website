@@ -40,6 +40,12 @@ const nav_buttons = [
     {name: "Leaderboard", id: "leaderboard", file: "leaderboard.html"},
     {name: "Invite", id: "invite", file:"invite.html"}
 ]
+
+
+const branches = ["main", "Dev", "Testing"]
+
+const git_url = ["https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/", "/Website/"]
+
 const git_buttons = [
     {name: "How To", id: "how_to", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/how_to.html"},
     {name: "Commands", id: "commands", file: 'https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/commands.html'},
@@ -95,6 +101,15 @@ function set_gallary(frame){
 }
 
 var places = ["first", "second", "third"]
+
+function makeGitURL(file){
+    let url = document.URL
+    for(i in branches){
+        if(url.includes(branches[i])){
+            return `${git_url[0]}${branches[i]}${git_url[1]}${file}`
+        }
+    }
+}
 
 
 function formatLetter(val){
@@ -195,7 +210,7 @@ function loadnav(location){
     parent.appendChild(nav_items)
     
     if(url.includes("github")){
-        nav_image.setAttribute("href", "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html")
+        nav_image.setAttribute("href", `${makeGitURL("home.html")}`)
         createbuttons("items", git_buttons, location)
     } else{
       nav_image.setAttribute("href", "home.html")
