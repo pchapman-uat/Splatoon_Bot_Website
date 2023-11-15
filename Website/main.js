@@ -69,11 +69,11 @@ const images = [
 ]
 
 const leaderboard = [
-    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 0},
-    {name: "Banana", avatar: "", score: 500},
-    {name: "Poison", avatar: "", score: 700},
-    {name: "Agent T", avatar: "", score: 200},
-    {name: "John Doe", avatar:"", score: 900}
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 540},
+    {name: "Banana", avatar: "", score: 5482},
+    {name: "Poison", avatar: "", score: 2150},
+    {name: "Agent T", avatar: "", score: 21525},
+    {name: "John Doe", avatar:"", score: 1561514}
 ]
 
 var splatfest = [
@@ -95,6 +95,25 @@ function set_gallary(frame){
 }
 
 var places = ["first", "second", "third"]
+
+
+function formatLetter(val){
+    let num_formats = [
+        {value: 1000, letter: 'k'},
+        {value: 1000000, letter: 'm'}
+    ]
+    let num = val
+    let largest = num
+
+    for(i in num_formats){
+        if(val >= num_formats[i].value){
+            num = val / num_formats[i].value
+            num = num.toFixed(2)
+            largest = `${num}${num_formats[i].letter}`
+        }
+    }
+    return largest
+}
 
 function change_frame(frame){
     if(frame < 0) {
@@ -241,11 +260,12 @@ function leader_table(array, i){
     table_row.appendChild(name)
 
     let score = document.createElement("td")
-    score.innerHTML = `${array[i].score}`
+    score.innerHTML = `${formatLetter(array[i].score)}`
     table_row.appendChild(score)
    
     parent.appendChild(table_row)
 }
+
 function load_leaderboard(array){
     let table = document.getElementById("remaining")
     table.innerHTML = ""
@@ -278,7 +298,7 @@ function load_leaderboard(array){
 
             let score = document.createElement("div")
             score.setAttribute("id", `${places[i]}_score`)
-            score.innerHTML = array[i].score
+            score.innerHTML = formatLetter(array[i].score)
             parent.appendChild(score)
         }
     }
@@ -310,7 +330,7 @@ function change_leaderboard(array){
             }
     
             let score = document.getElementById(`${places[i]}_score`)
-            score.innerHTML = array[i].score
+            score.innerHTML = formatLetter(array[i].score)
         }
     }
 }
