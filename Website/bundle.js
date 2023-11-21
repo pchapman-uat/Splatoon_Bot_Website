@@ -1,3 +1,10 @@
+// API For splatoon3 Rotation https://github.com/KartoffelChipss/splatoon3api
+
+/*
+    This document was bundlend using the NodeJS Package Browserify (https://browserify.org)
+    Allowing for the API for Splatoon 3 Rotation to work on the web browser with js
+    Code bellow this was not created by me, is a bundled version of the Splatoon 3 Rotation API
+*/
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Test = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
@@ -1208,7 +1215,13 @@ module.exports={
         "ShoesGear": "クツ"
     }
 }
+
 },{}],4:[function(require,module,exports){
+
+/* 
+    The code bellow was writen by me, and not created using Browserify
+    Howerver since it uses the Splatoon3 API, it needed to be bundled    
+*/
 const splatoon3api = require("splatoon3api");
 const Splatoon3 = new splatoon3api.Client("en-GB");
 
@@ -1226,11 +1239,14 @@ function splatoontest(){
                 {Display_Name: "X Battle", name: "xbattle", api: res.xbattle[0], stages: 2},
                 {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[0], stages: 1, weapons: [sal.regularSchedules[0].weapons[0], sal.regularSchedules[0].weapons[1], sal.regularSchedules[0].weapons[2], sal.regularSchedules[0].weapons[3]]}
             ]
-    
+            // For each mode add the information to the rotation page
             for(i in modes){
                 for(let j = 0; j < modes[i].stages; j++){
                     console.log(Number(j)+1)
                     let stage = document.getElementById(`${modes[i].name}${Number(j)+1}`)
+                    
+                    // Within the API it is formated within nested array, these if statements check how many stages, refereing to the stage, stage1, or stage2 arrays as needed
+                    
                     if(j === 0){
                         if(modes[i].stages === 1){
                             var data = modes[i].api.stage
@@ -1242,8 +1258,11 @@ function splatoontest(){
                         var data = modes[i].api.stage2
                     }
 
+                    // Using the modes array it will display the name
+
                     let mode = document.getElementById(`${modes[i].name}${Number(j)+1}`)
 
+                    // Error checking for mode is not found, this happens when limited time modes accor
                     if(mode){
 
                         
@@ -1271,6 +1290,8 @@ function splatoontest(){
                 }
                 console.log(i)
 
+                // Load in the time and date infomration
+
                 let time_parent = document.getElementById(`${modes[i].name}_header`)
                 let date_options = {hour: "numeric"}
                 
@@ -1290,11 +1311,15 @@ function splatoontest(){
 
                 time_parent.appendChild(times)
 
+                // Salmon run has drasticly differnt styles, havving only one map, having also four weapons to show
+
                 if(modes[i].name === "salmon"){
                     let weapons_box = document.createElement("div")
                     weapons_box.setAttribute("class", "weapons")
 
-                    for(j in modes[i].weapons){                        
+                    for(j in modes[i].weapons){     
+                        
+                        // Add the image (always 4) of the weapons aviable
                         let img = document.createElement("img")
                         img.setAttribute("src",  `${modes[i].weapons[j].image}`)
 

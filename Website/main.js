@@ -43,6 +43,7 @@ const nav_buttons = [
 const git_buttons = [
     {name: "How To", id: "how_to", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/how_to.html"},
     {name: "Commands", id: "commands", file: 'https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/commands.html'},
+    {name: "Rotation", id: "rotation", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/rotation.html"},
     {name: "Documentation", id: "documentation", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/documentation.html"},
     {name: "Leaderboard", id: "leaderboard", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/leaderboard.html"},
     {name: "Invite", id: "invite", file:"https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/invite.html"}
@@ -83,9 +84,6 @@ var splatfest = [
     {name: "Agent T", avatar: "", score: 200},
     {name: "John Doe", avatar:"", score: 400}
 ]
-// Duration in seconds
-const ani_duration = 1
-
 function set_gallary(frame){
     document.getElementById("gall_header").innerHTML = gallary[frame].header
     document.getElementById("gall_about").innerHTML= gallary[frame].text
@@ -96,32 +94,44 @@ function set_gallary(frame){
 
 var places = ["first", "second", "third"]
 
-
+// This function abriates numbers, changing it from 1500 to 1.5k
 function formatLetter(val){
+    // Identify possible formats with letter
     let num_formats = [
         {value: 1000, letter: 'k'},
         {value: 1000000, letter: 'm'}
     ]
+
     let num = val
     let largest = num
 
     for(i in num_formats){
+        // Check if value is grater than or equal to the format value
         if(val >= num_formats[i].value){
+            // Devide by the format value
             num = val / num_formats[i].value
+            // Round to two decimal places
             num = num.toFixed(2)
+            // Set this to the largest
             largest = `${num}${num_formats[i].letter}`
         }
     }
+    // Return the largest abbrivated value
     return largest
 }
 
+// This function changes the Gallary to a differnt frame
 function change_frame(frame){
+    // Using the inputed frame value it will change its position
     if(frame < 0) {
         frame = gallary.length - 1 
     } else if(frame > gallary.length - 1) {
+        // If it is greater than the last eliment, reset to the begining
         frame = 0
     }
+    // Run the function to set the gallary image
     set_gallary(frame)
+    // Change buttons to update with the next value
     document.getElementById("left").setAttribute("onclick", `change_frame(${frame-1})`)
     document.getElementById("right").setAttribute("onclick", `change_frame(${frame+1})`)
 
@@ -131,6 +141,7 @@ function loadsalmon(){
     console.log("loading...")
     let parent = document.getElementById("images")
 
+    // For each value in the array of imaghes it will create a div, and an image and text each.
     for(i in images){
         let item = document.createElement("div")
         item.setAttribute("class", "item")
@@ -172,11 +183,14 @@ function createbuttons(parent, array, location){
     }
 }
 
+// This loads the navigation based on the current location as well as if the page is on github
+// Note this will be optimized to use one array, as well as change what branch you are on in github in the future
+
 function loadnav(location){
     //<a class="home_img" href="home.html"><img id="svgImage" src="home.svg" width="40px"></a> 
     let parent = document.getElementById("nav")
 
-
+    // The following lines create the HTML nav image
     let nav_image = document.createElement("a")
     nav_image.setAttribute("class", "home_img")
     let url = document.URL
@@ -190,12 +204,15 @@ function loadnav(location){
     image.setAttribute("width","50px")
     nav_image.appendChild(image)
 
+    // Create a div for the nav items
     let nav_items = document.createElement("items")
     nav_items.setAttribute("id", "items")
     parent.appendChild(nav_items)
     
+    // If the URL includes github set the reference to github viewer
     if(url.includes("github")){
         nav_image.setAttribute("href", "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html")
+        // Call the create buttons functions, which makes the eliments of the buttons based on the array
         createbuttons("items", git_buttons, location)
         alert("Warning! You viewing this on github, and it may cause issues, please notify Squibs if there is an issue")
     } else{
@@ -205,6 +222,9 @@ function loadnav(location){
 }
 
 function nav_color(page){
+    // Detect the page that the user is on, and then change the style of the nav item based on the current page
+    
+    // If the page is the home page set the image to be the purple verison
     if(page === "home"){
         var svgImage = document.getElementById('svgImage');
         svgImage.src ="home (Purple).svg"
@@ -221,6 +241,7 @@ function nav_color(page){
 
 
 }
+// This function changes the number inputed to have an ordinal suffix
 function ordinal_suffix_of(i) {
     let j = i % 10,
         k = i % 100;
@@ -236,17 +257,22 @@ function ordinal_suffix_of(i) {
     return i + "th";
 }
 
+// Based on the array provided it updates the leaderboard table
 function leader_table(array, i){
+
     console.log("Remaining")
+    // Create table 
     let parent = document.getElementById("remaining")
     let table_row = document.createElement("tr")
     
+    // Create table elements of Place, Avatar, Name and Score
     let place = document.createElement("td")
     place.innerHTML = ordinal_suffix_of(Number(i)+1)
     table_row.appendChild(place)
 
     let avatar = document.createElement("td")
     let image = document.createElement("img")
+    // Check if avatar exists, if not use default
     if(array[i].avatar === ""){
         image.setAttribute("src", `images/leaderboard/default.png`)
     } else {
@@ -270,17 +296,25 @@ function leader_table(array, i){
 function load_leaderboard(array){
     let table = document.getElementById("remaining")
     table.innerHTML = ""
+    // set the table to blank
     console.log("Loading leaderboard")
+
+    // Sort the leaderboard
     array.sort((a, b) => Number(b.score) - Number(a.score))
     console.log(array)
     for(i in array){
         console.log("adding element")
         console.log(i)
         console.log(places.length)
+        // Check if place is 1st, 2nd, or 3rd
+        
         if(i >= places.length){
-         leader_table(array, i)
+            // If grater than 3rd place, add to table
+            leader_table(array, i)
         } else {
             console.log(places[i])
+
+            // If first elment, set to first place element, and so on for 2nd and 3rd
             let parent = document.getElementById(places[i])
             
             let name = document.createElement("div")
@@ -290,6 +324,7 @@ function load_leaderboard(array){
 
             let img = document.createElement("img")
             img.setAttribute("id", `${places[i]}_img`)
+            // If avatar dose not exist set to default
             if(array[i].avatar === ""){
                 img.setAttribute("src", `images/leaderboard/default.png`)
             } else {
@@ -305,6 +340,8 @@ function load_leaderboard(array){
     }
 }
 
+
+// This function dose the as load_leaderboard, however it simply changes it rather than making it again, this could be simplified
 function change_leaderboard(array){
     let mode = document.getElementById("mode")
     if(mode.innerHTML === "Power Eggs"){
