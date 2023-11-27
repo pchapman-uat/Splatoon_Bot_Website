@@ -176,16 +176,18 @@ function createbuttons(parent, array, location, github){
         let button = document.createElement("a")
         // Check if location is provided
         if(typeof location !== "undefined"){
+            button.setAttribute("id", array[i].id)
+            button.innerHTML = array[i].name  
             // Set the atribute for the button to be a reference to a different page (used for nav)
             if(github){
                 button.setAttribute("href",`${makeGitURL(array[i].file)}`)
             } else {
                 button.setAttribute("href",`${array[i].file}`)
             }
-            button.setAttribute("id", array[i].id)
+            
         }
         // set the inner HTML (the text) to the name of the element
-        button.innerHTML = array[i].name  
+        
         // Append the button to the parent
         parent.appendChild(button)
     }
