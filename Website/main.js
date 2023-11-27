@@ -180,7 +180,7 @@ function createbuttons(parent, array, location, github){
             button.innerHTML = array[i].name  
             // Set the atribute for the button to be a reference to a different page (used for nav)
             if(github){
-                button.setAttribute("href",`${makeGitURL(array[i].file)}`)
+                button.setAttribute("href",`${makeGitURL(`${array[i].file}`)}`)
             } else {
                 button.setAttribute("href",`${array[i].file}`)
             }
