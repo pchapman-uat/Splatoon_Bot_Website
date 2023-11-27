@@ -164,7 +164,7 @@ function loadsalmon(){
 }
 
 
-function createbuttons(parent, array, location){
+function createbuttons(parent, array, location, github){
     console.log(parent)
     console.log(array)
     console.log(location)
@@ -177,7 +177,11 @@ function createbuttons(parent, array, location){
         // Check if location is provided
         if(typeof location !== "undefined"){
             // Set the atribute for the button to be a reference to a different page (used for nav)
-            button.setAttribute("href",`${array[i].file}`)
+            if(github){
+                button.setAttribute("href",`${makeGitURL(array[i].file)}`)
+            } else {
+                button.setAttribute("href",`${array[i].file}`)
+            }
             button.setAttribute("id", array[i].id)
         }
         // set the inner HTML (the text) to the name of the element
@@ -211,10 +215,10 @@ function loadnav(location){
     
     if(url.includes("github")){
         nav_image.setAttribute("href", `${makeGitURL("home.html")}`)
-        createbuttons("items", git_buttons, location)
+        createbuttons("items", nav_buttons, location, true)
     } else{
       nav_image.setAttribute("href", "home.html")
-      createbuttons("items", nav_buttons, location)  
+      createbuttons("items", nav_buttons, location, false)  
     }
 }
 
