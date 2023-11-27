@@ -12,6 +12,10 @@ I do not own the Splatoon franchise, characters, art, and rights belong to [Nint
 ## GitHub Viewer
 View with a GitHub Viewer: [Click Here](https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html) - NOTE! Some issues may occur with this viewer.
 
+## Pages Documentation
+<details>
+<summary>Veiw Pages</summary>
+
 ## Home
 
 ### About
@@ -126,3 +130,4 @@ This page will show the leaderboard with the information about each user and the
   * Name
   * Score
 
+</details>
