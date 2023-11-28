@@ -1213,18 +1213,20 @@ const splatoon3api = require("splatoon3api");
 const Splatoon3 = new splatoon3api.Client("en-GB");
 
 
-function splatoontest(){
+function splatoontest(update){
     Splatoon3.getStages(res => {
         console.log(res)
 
         Splatoon3.getSalmonRun(sal =>{
+            let session = document.getElementById("slider").value
             console.log(sal)
             let modes = [
-                {Display_Name: "Turf War", name: "turf", api: res.regular[0], stages: 2},
-                {Display_Name: "Anarchy Open", name: "open", api: res.ranked[0].open, stages: 2},
-                {Display_Name: "Anarchy Series", name: "series", api: res.ranked[0].series, stages: 2},
-                {Display_Name: "X Battle", name: "xbattle", api: res.xbattle[0], stages: 2},
-                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[0], stages: 1, weapons: [sal.regularSchedules[0].weapons[0], sal.regularSchedules[0].weapons[1], sal.regularSchedules[0].weapons[2], sal.regularSchedules[0].weapons[3]]}
+                {Display_Name: "Turf War", name: "turf", api: res.regular[session], stages: 2},
+                {Display_Name: "Anarchy Open", name: "open", api: res.ranked[session].open, stages: 2},
+                {Display_Name: "Anarchy Series", name: "series", api: res.ranked[session].series, stages: 2},
+                {Display_Name: "X Battle", name: "xbattle", api: res.xbattle[session], stages: 2},
+                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[session], stages: 1, weapons: [sal.regularSchedules[session].weapons[0], sal.regularSchedules[session].weapons[1], sal.regularSchedules[session].weapons[2], sal.regularSchedules[session].weapons[3]]},
+                {Display_Name: "Big Run", name: "big_run", api: sal.bigRunSchedules[0], stages: 1, weapons: [sal.bigRunSchedules[0].weapons[0], sal.bigRunSchedules[0].weapons[1], sal.bigRunSchedules[0].weapons[2], sal.bigRunSchedules[0].weapons[3]]}
             ]
     
             for(i in modes){
@@ -1250,6 +1252,7 @@ function splatoontest(){
                         // Load Name
                         let name = document.createElement("div")
                         name.setAttribute("class", "name")
+                        name.setAttribute("id", `${data.name}_name` )
                         name.innerHTML = data.name
                         mode.appendChild(name)
 
@@ -1290,18 +1293,23 @@ function splatoontest(){
 
                 time_parent.appendChild(times)
 
-                if(modes[i].name === "salmon"){
-                    let weapons_box = document.createElement("div")
-                    weapons_box.setAttribute("class", "weapons")
+                if(modes[i].name === "salmon" || modes[i].name === "big_run"){
+                    if(modes[i].name === "Big Run" && !modes[i].api){
 
-                    for(j in modes[i].weapons){                        
-                        let img = document.createElement("img")
-                        img.setAttribute("src",  `${modes[i].weapons[j].image}`)
-
-                        weapons_box.appendChild(img)
+                    } else {
+                        let weapons_box = document.createElement("div")
+                        weapons_box.setAttribute("class", "weapons")
+    
+                        for(j in modes[i].weapons){                        
+                            let img = document.createElement("img")
+                            img.setAttribute("src",  `${modes[i].weapons[j].image}`)
+    
+                            weapons_box.appendChild(img)
+                        }
+    
+                        time_parent.appendChild(weapons_box)
                     }
 
-                    time_parent.appendChild(weapons_box)
                 }
             }
         })

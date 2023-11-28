@@ -8,6 +8,19 @@
     margin-right: var(--lr_margin);
     padding-bottom: 2%;
 }
+
+.slider_div {
+
+    display: flex;
+    justify-content: center;
+}
+input{
+
+    height: 50px;
+    width: 50%;
+ 
+
+}
 .section{
     display: flex;
     justify-content: space-evenly;
@@ -76,4 +89,8 @@
 
 #salmon_header{
     background-image: url("/images/Modes/salmon.png");
+}
+
+#big_run_header{
+    background-image: url("/images/Modes/big_run.png");
 }
