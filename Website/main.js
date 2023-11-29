@@ -40,6 +40,12 @@ const nav_buttons = [
     {name: "Leaderboard", id: "leaderboard", file: "leaderboard.html"},
     {name: "Invite", id: "invite", file:"invite.html"}
 ]
+
+
+const branches = ["main", "Dev", "Testing"]
+
+const git_url = ["https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/", "/Website/"]
+
 const git_buttons = [
     {name: "How To", id: "how_to", file: "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/how_to.html"},
     {name: "Commands", id: "commands", file: 'https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/commands.html'},
@@ -69,19 +75,19 @@ const images = [
 ]
 
 const leaderboard = [
-    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 540},
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 23434},
     {name: "Banana", avatar: "", score: 5482},
     {name: "Poison", avatar: "", score: 2150},
     {name: "Agent T", avatar: "", score: 21525},
-    {name: "John Doe", avatar:"", score: 1561514}
+    {name: "John Doe", avatar:"", score: 215}
 ]
 
 var splatfest = [
-    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 500},
-    {name: "Banana", avatar: "", score: 600},
-    {name: "Poison", avatar: "", score: 100},
-    {name: "Agent T", avatar: "", score: 200},
-    {name: "John Doe", avatar:"", score: 400}
+    {name: "Squibs", avatar: "images/leaderboard/squibs.jpg", score: 4353},
+    {name: "Banana", avatar: "", score: 3453},
+    {name: "Poison", avatar: "", score: 221},
+    {name: "Agent T", avatar: "", score: 543453},
+    {name: "John Doe", avatar:"", score: 5387}
 ]
 // Duration in seconds
 const ani_duration = 1
@@ -95,6 +101,15 @@ function set_gallary(frame){
 }
 
 var places = ["first", "second", "third"]
+
+function makeGitURL(file){
+    let url = document.URL
+    for(i in branches){
+        if(url.includes(branches[i])){
+            return `${git_url[0]}${branches[i]}${git_url[1]}${file}`
+        }
+    }
+}
 
 
 function formatLetter(val){
@@ -149,7 +164,7 @@ function loadsalmon(){
 }
 
 
-function createbuttons(parent, array, location){
+function createbuttons(parent, array, location, github){
     console.log(parent)
     console.log(array)
     console.log(location)
@@ -161,12 +176,18 @@ function createbuttons(parent, array, location){
         let button = document.createElement("a")
         // Check if location is provided
         if(typeof location !== "undefined"){
-            // Set the atribute for the button to be a reference to a different page (used for nav)
-            button.setAttribute("href",`${array[i].file}`)
             button.setAttribute("id", array[i].id)
+            button.innerHTML = array[i].name  
+            // Set the atribute for the button to be a reference to a different page (used for nav)
+            if(github){
+                button.setAttribute("href",`${makeGitURL(`${array[i].file}`)}`)
+            } else {
+                button.setAttribute("href",`${array[i].file}`)
+            }
+            
         }
         // set the inner HTML (the text) to the name of the element
-        button.innerHTML = array[i].name  
+        
         // Append the button to the parent
         parent.appendChild(button)
     }
@@ -195,11 +216,11 @@ function loadnav(location){
     parent.appendChild(nav_items)
     
     if(url.includes("github")){
-        nav_image.setAttribute("href", "https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/main/Website/home.html")
-        createbuttons("items", git_buttons, location)
+        nav_image.setAttribute("href", `${makeGitURL("home.html")}`)
+        createbuttons("items", nav_buttons, location, true)
     } else{
       nav_image.setAttribute("href", "home.html")
-      createbuttons("items", nav_buttons, location)  
+      createbuttons("items", nav_buttons, location, false)  
     }
 }
 
