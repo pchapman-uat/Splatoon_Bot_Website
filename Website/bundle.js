@@ -1221,12 +1221,24 @@ function splatoontest(update){
         Splatoon3.getSalmonRun(sal =>{
             let session = document.getElementById("slider").value
             console.log(sal)
+            console.log(sal.regularSchedules)
+            let length = 0
+            for(i in sal.regularSchedules){
+                length++
+            }
+
+            let salmon_session = 0
+            if(length < (Number(session)+1)){
+                salmon_session = 0
+            } else {
+                salmon_session = session
+            }
             let modes = [
                 {Display_Name: "Turf War", name: "turf", api: res.regular[session], stages: 2},
                 {Display_Name: "Anarchy Open", name: "open", api: res.ranked[session].open, stages: 2},
                 {Display_Name: "Anarchy Series", name: "series", api: res.ranked[session].series, stages: 2},
                 {Display_Name: "X Battle", name: "xbattle", api: res.xbattle[session], stages: 2},
-                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[session], stages: 1, weapons: [sal.regularSchedules[session].weapons[0], sal.regularSchedules[session].weapons[1], sal.regularSchedules[session].weapons[2], sal.regularSchedules[session].weapons[3]]},
+                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[salmon_session], stages: 1, weapons: [sal.regularSchedules[salmon_session].weapons[0], sal.regularSchedules[salmon_session].weapons[1], sal.regularSchedules[salmon_session].weapons[2], sal.regularSchedules[salmon_session].weapons[3]]},
                 {Display_Name: "Big Run", name: "big_run", api: sal.bigRunSchedules[0], stages: 1, weapons: [sal.bigRunSchedules[0].weapons[0], sal.bigRunSchedules[0].weapons[1], sal.bigRunSchedules[0].weapons[2], sal.bigRunSchedules[0].weapons[3]]}
             ]
     
@@ -1328,13 +1340,7 @@ function splatoontest(update){
                 
                 if(modes[i].name === "salmon" || modes[i].name === "big_run"){
 
-                    console.log(sal.regularSchedules)
-                    console.log(sal.regularSchedules.size)
-
-
-                    if(sal.regularSchedules.length <= session ){
-
-                    } else {
+                    
                         let img_id = `${modes[i].name}_weapon_`
 
                         if(!update){
@@ -1350,18 +1356,15 @@ function splatoontest(update){
                             }
         
                             time_parent.appendChild(weapons_box)
-
+    
                         } else {
-
+    
                             for(j in modes[i].weapons){
                                 let img = document.getElementById(`${img_id}${j}`)
                                 img.setAttribute("src", ` ${modes[i].weapons[j].image}`)
                             }
                             
                         }
-
-                    }
-
                 }
             }
         })
