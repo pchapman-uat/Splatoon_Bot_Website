@@ -42,7 +42,7 @@ const nav_buttons = [
 ]
 
 
-const branches = ["main", "Dev", "Testing"]
+const branches = ["main", "Dev", "Testing", "Alpha-0.03"]
 
 const git_url = ["https://htmlpreview.github.io/?https://github.com/pchapman-uat/Splatoon_Bot_Website/blob/", "/Website/"]
 
