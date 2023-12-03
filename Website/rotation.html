@@ -10,10 +10,16 @@
     <title>Rotation - Splatoon Bot</title>
 </head>
 <body id="page-body" onload="Test.splatoontest(), loadinfo('', 'rotation')">
+
     <nav id="nav">
 
     </nav>
     <div class="rotation rounded">
+        <div class="slider_div">
+            <input type="range" min="0" max="12" value="0" id="slider" onchange="Test.splatoontest(true)">
+        </div>
+
+        
         <div class="normal">
             <div class="rot_header shadow" id="turf_header">
                 <div class="mode splatoon">
@@ -27,31 +33,29 @@
                 <div id="turf2"> 
                 </div>
             </div>
-            <span clas="ranked">
-                <div class="rot_header shadow" id="open_header">
-                    <div class="mode splatoon">
-                        Anarchy Open
-                    </div>
-                    
+            <div class="rot_header shadow" id="open_header">
+                <div class="mode splatoon">
+                    Anarchy Open
                 </div>
-                <div class="section open">
-                    <div id="open1">
-                    </div>
-                    <div id="open2">
-                    </div>
+                
+            </div>
+            <div class="section open">
+                <div id="open1">
                 </div>
-                <div class="rot_header shadow" id="series_header">
-                    <div class="mode splatoon">
-                        Anarchy Series
-                    </div>
+                <div id="open2">
                 </div>
-                <div class="section series">
-                    <div id="series1">
-                    </div>
-                    <div id="series2">
-                    </div>
+            </div>
+            <div class="rot_header shadow" id="series_header">
+                <div class="mode splatoon">
+                    Anarchy Series
                 </div>
-            </span>
+            </div>
+            <div class="section series">
+                <div id="series1">
+                </div>
+                <div id="series2">
+                </div>
+            </div>
             <div class="rot_header shadow" id="xbattle_header">
                 <div class="mode splatoon">
                     X-Battle
@@ -73,6 +77,18 @@
             <div id="salmon1">
             </div>
         </div>
+
+        <div class="rot_header shadow" id="big_run_header">
+            <div class="mode splatoon">
+                Big Run
+            </div>
+        </div>
+        <div class="section salmon">
+            <div id="big_run1">
+            </div>
+        </div>
+
+
     </div>
     <footer id="footer" class="rounded">
 
