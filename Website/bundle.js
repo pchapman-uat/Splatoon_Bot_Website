@@ -1214,18 +1214,31 @@ const Splatoon3 = new splatoon3api.Client("en-GB");
 
 
 function splatoontest(update){
+    console.log(update)
     Splatoon3.getStages(res => {
         console.log(res)
 
         Splatoon3.getSalmonRun(sal =>{
             let session = document.getElementById("slider").value
             console.log(sal)
+            console.log(sal.regularSchedules)
+            let length = 0
+            for(i in sal.regularSchedules){
+                length++
+            }
+
+            let salmon_session = 0
+            if(length < (Number(session)+1)){
+                salmon_session = 0
+            } else {
+                salmon_session = session
+            }
             let modes = [
                 {Display_Name: "Turf War", name: "turf", api: res.regular[session], stages: 2},
                 {Display_Name: "Anarchy Open", name: "open", api: res.ranked[session].open, stages: 2},
                 {Display_Name: "Anarchy Series", name: "series", api: res.ranked[session].series, stages: 2},
                 {Display_Name: "X Battle", name: "xbattle", api: res.xbattle[session], stages: 2},
-                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[session], stages: 1, weapons: [sal.regularSchedules[session].weapons[0], sal.regularSchedules[session].weapons[1], sal.regularSchedules[session].weapons[2], sal.regularSchedules[session].weapons[3]]},
+                {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[salmon_session], stages: 1, weapons: [sal.regularSchedules[salmon_session].weapons[0], sal.regularSchedules[salmon_session].weapons[1], sal.regularSchedules[salmon_session].weapons[2], sal.regularSchedules[salmon_session].weapons[3]]},
                 {Display_Name: "Big Run", name: "big_run", api: sal.bigRunSchedules[0], stages: 1, weapons: [sal.bigRunSchedules[0].weapons[0], sal.bigRunSchedules[0].weapons[1], sal.bigRunSchedules[0].weapons[2], sal.bigRunSchedules[0].weapons[3]]}
             ]
     
@@ -1247,21 +1260,37 @@ function splatoontest(update){
                     let mode = document.getElementById(`${modes[i].name}${Number(j)+1}`)
 
                     if(mode){
+                        let name_id = `${modes[i].name}_name${Number(j)+1}`
+                        let img_id = `${modes[i].name}_stage${Number(j)+1}`
+
+
+                        if(!update){
+
+                            // Load Name
+                            let name = document.createElement("div")
+                            name.setAttribute("class", "name")
+                            name.setAttribute("id", name_id)
+                            name.innerHTML = data.name
+                            mode.appendChild(name)
+
+                            // Load Image
+                            let image = document.createElement("img")
+                            image.setAttribute("class", "stage_img")
+                            image.setAttribute("id", img_id )
+                            image.setAttribute("src", `${data.image}`)
+                            mode.appendChild(image)
+                        } else {
+
+                            let name = document.getElementById(name_id)
+                            name.innerHTML = data.name
+
+                            let image = document.getElementById(img_id)
+                            image.setAttribute("src", `${data.image}`)
+
+                        }
 
                         
-                        // Load Name
-                        let name = document.createElement("div")
-                        name.setAttribute("class", "name")
-                        name.setAttribute("id", `${data.name}_name` )
-                        name.innerHTML = data.name
-                        mode.appendChild(name)
 
-                         // Load Image
-                         let image = document.createElement("img")
-                         image.setAttribute("class", "stage_img")
-                         image.setAttribute("id", `${modes[i].name}_stage${Number(j)+1}`)
-                         image.setAttribute("src", `${data.image}`)
-                         mode.appendChild(image)
 
 
                     }else{
@@ -1277,39 +1306,65 @@ function splatoontest(update){
                 let time_parent = document.getElementById(`${modes[i].name}_header`)
                 let date_options = {hour: "numeric"}
                 
-                let times = document.createElement("div")
-                times.setAttribute("class", "times")
+                let times_id = `${modes[i].name}_times`
+                let start_id = `${modes[i].name}_start`
+                let end_id = `${modes[i].name}_end`
 
-                let start = document.createElement("div")
-                start.setAttribute("class", "start")
-                start.innerHTML = new Date(modes[i].api.start_time).toLocaleDateString('en-us', date_options)
-
-                let end = document.createElement("div")
-                end.setAttribute("class", "end")
-                end.innerHTML = new Date(modes[i].api.end_time).toLocaleDateString('en-us', date_options)
-
-                times.appendChild(start)
-                times.appendChild(end)
-
-                time_parent.appendChild(times)
-
+                if(!update){
+                    let times = document.createElement("div")
+                    times.setAttribute("class", "times")
+                    times.setAttribute("id", times_id)
+    
+                    let start = document.createElement("div")
+                    start.setAttribute("class", "start")
+                    start.setAttribute("id", start_id)
+                    start.innerHTML = new Date(modes[i].api.start_time).toLocaleDateString('en-us', date_options)
+    
+                    let end = document.createElement("div")
+                    end.setAttribute("class", "end")
+                    end.setAttribute("id", end_id)
+                    end.innerHTML = new Date(modes[i].api.end_time).toLocaleDateString('en-us', date_options)
+    
+                    times.appendChild(start)
+                    times.appendChild(end)
+    
+                    time_parent.appendChild(times)
+    
+                } else {
+                    let start = document.getElementById(start_id)
+                    start.innerHTML = new Date(modes[i].api.start_time).toLocaleDateString('en-us', date_options)
+    
+                    let end = document.getElementById(end_id)
+                    end.innerHTML = new Date(modes[i].api.end_time).toLocaleDateString('en-us', date_options)
+                }
+                
                 if(modes[i].name === "salmon" || modes[i].name === "big_run"){
-                    if(modes[i].name === "Big Run" && !modes[i].api){
 
-                    } else {
-                        let weapons_box = document.createElement("div")
-                        weapons_box.setAttribute("class", "weapons")
+                    
+                        let img_id = `${modes[i].name}_weapon_`
+
+                        if(!update){
+                            let weapons_box = document.createElement("div")
+                            weapons_box.setAttribute("class", "weapons")
+        
+                            for(j in modes[i].weapons){                        
+                                let img = document.createElement("img")
+                                img.setAttribute("src",  `${modes[i].weapons[j].image}`)
+                                img.setAttribute("id", `${img_id}${j}`)
+        
+                                weapons_box.appendChild(img)
+                            }
+        
+                            time_parent.appendChild(weapons_box)
     
-                        for(j in modes[i].weapons){                        
-                            let img = document.createElement("img")
-                            img.setAttribute("src",  `${modes[i].weapons[j].image}`)
+                        } else {
     
-                            weapons_box.appendChild(img)
+                            for(j in modes[i].weapons){
+                                let img = document.getElementById(`${img_id}${j}`)
+                                img.setAttribute("src", ` ${modes[i].weapons[j].image}`)
+                            }
+                            
                         }
-    
-                        time_parent.appendChild(weapons_box)
-                    }
-
                 }
             }
         })
