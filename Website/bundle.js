@@ -1,3 +1,10 @@
+// API For splatoon3 Rotation https://github.com/KartoffelChipss/splatoon3api
+
+/*
+    This document was bundlend using the NodeJS Package Browserify (https://browserify.org)
+    Allowing for the API for Splatoon 3 Rotation to work on the web browser with js
+    Code bellow this was not created by me, is a bundled version of the Splatoon 3 Rotation API
+*/
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Test = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
@@ -1208,18 +1215,27 @@ module.exports={
         "ShoesGear": "クツ"
     }
 }
+
 },{}],4:[function(require,module,exports){
+
+/* 
+    The code bellow was writen by me, and not created using Browserify
+    Howerver since it uses the Splatoon3 API, it needed to be bundled    
+*/
 const splatoon3api = require("splatoon3api");
 const Splatoon3 = new splatoon3api.Client("en-GB");
 
 
-function splatoontest(update){
+function splatoontest(update, id){
     console.log(update)
     Splatoon3.getStages(res => {
         console.log(res)
 
         Splatoon3.getSalmonRun(sal =>{
-            let session = document.getElementById("slider").value
+            let session = document.getElementById(id).value
+
+            document.getElementById("slider1").value = session
+            document.getElementById("slider2").value = session
             console.log(sal)
             console.log(sal.regularSchedules)
             let length = 0
@@ -1239,13 +1255,23 @@ function splatoontest(update){
                 {Display_Name: "Anarchy Series", name: "series", api: res.ranked[session].series, stages: 2},
                 {Display_Name: "X Battle", name: "xbattle", api: res.xbattle[session], stages: 2},
                 {Display_Name: "Salmon Run", name: "salmon", api: sal.regularSchedules[salmon_session], stages: 1, weapons: [sal.regularSchedules[salmon_session].weapons[0], sal.regularSchedules[salmon_session].weapons[1], sal.regularSchedules[salmon_session].weapons[2], sal.regularSchedules[salmon_session].weapons[3]]},
-                {Display_Name: "Big Run", name: "big_run", api: sal.bigRunSchedules[0], stages: 1, weapons: [sal.bigRunSchedules[0].weapons[0], sal.bigRunSchedules[0].weapons[1], sal.bigRunSchedules[0].weapons[2], sal.bigRunSchedules[0].weapons[3]]}
             ]
-    
+
+            // Check if big run is active, if not hide div
+            if(sal.bigRunSchedules[0]){
+                modes.push({Display_Name: "Big Run", name: "big_run", api: sal.bigRunSchedules[0], stages: 1, weapons: [sal.bigRunSchedules[0].weapons[0], sal.bigRunSchedules[0].weapons[1], sal.bigRunSchedules[0].weapons[2], sal.bigRunSchedules[0].weapons[3]]})
+            } else {
+                console.log("No Active Big run")
+                document.getElementById("big_run").hidden = true
+            }
+            // For each mode add the information to the rotation page
             for(i in modes){
                 for(let j = 0; j < modes[i].stages; j++){
                     console.log(Number(j)+1)
                     let stage = document.getElementById(`${modes[i].name}${Number(j)+1}`)
+                    
+                    // Within the API it is formated within nested array, these if statements check how many stages, refereing to the stage, stage1, or stage2 arrays as needed
+                    
                     if(j === 0){
                         if(modes[i].stages === 1){
                             var data = modes[i].api.stage
@@ -1257,8 +1283,11 @@ function splatoontest(update){
                         var data = modes[i].api.stage2
                     }
 
+                    // Using the modes array it will display the name
+
                     let mode = document.getElementById(`${modes[i].name}${Number(j)+1}`)
 
+                    // Error checking for mode is not found, this happens when limited time modes accor
                     if(mode){
                         let name_id = `${modes[i].name}_name${Number(j)+1}`
                         let img_id = `${modes[i].name}_stage${Number(j)+1}`
@@ -1302,6 +1331,8 @@ function splatoontest(update){
                     
                 }
                 console.log(i)
+
+                // Load in the time and date infomration
 
                 let time_parent = document.getElementById(`${modes[i].name}_header`)
                 let date_options = {hour: "numeric"}
