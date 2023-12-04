@@ -77,24 +77,9 @@ input{
     background-position-y: center;
 }
 
-#turf_header{
-    background-image: url("/images/Modes/turf_war.png");
-}
-
-#open_header, #series_header{
-    background-image: url("/images/Modes/ranked.png");
-
-}
-
-#xbattle_header{
-    background-image: url("/images/Modes/xbattle.png");
-
-}
-
-#salmon_header{
-    background-image: url("/images/Modes/salmon.png");
-}
-
-#big_run_header{
-    background-image: url("/images/Modes/big_run.png");
+.icon{
+    width: 10pc;
+    position: absolute;
+    margin-top: 1pc;
+    left: 20%;
 }
