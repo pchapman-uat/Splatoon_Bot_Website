@@ -24,11 +24,15 @@ input{
 .section{
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     /* background-color: green; */
 }
 .stage_img{
-    width: 500px;
+    width: 100%;
     border-radius: 50px;
+}
+#salmon_stage1{
+    width: 35pc;
 }
 .name{
     text-align: center;
