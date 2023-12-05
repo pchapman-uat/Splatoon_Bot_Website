@@ -210,7 +210,6 @@ function createbuttons(parent, array, location, github){
 function loadnav(location){
     //<a class="home_img" href="home.html"><img id="svgImage" src="home.svg" width="40px"></a> 
     let parent = document.getElementById("nav")
-
     // The following lines create the HTML nav image
     let nav_image = document.createElement("a")
     nav_image.setAttribute("class", "home_img")
