@@ -9,12 +9,18 @@
     <script src="rotation.js" type="module"></script>
     <script src="main.js"></script>
     <title>Rotation - Splatoon Bot</title>
+ 
 </head>
+<!-- Due to some scripts being modules, I am unable to call the load info function unless it is at the end of the
+page, as it would run before the elements loaded -->
+
 <body id="page-body">
+
 
     <nav id="nav">
 
     </nav>
+
     <div class="rotation rounded">
         <div class="slider_div">
             <input type="range" min="0" max="12" value="0" id="slider1">
@@ -100,5 +106,8 @@
     <footer id="footer" class="rounded">
 
     </footer>
+    <script>
+        loadinfo('','rotation')
+    </script>
 </body>
 </html>
