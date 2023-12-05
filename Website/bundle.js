@@ -1227,21 +1227,14 @@ const splatoon3api = require("splatoon3api");
 const Splatoon3 = new splatoon3api.Client("en-GB");
 
 
-window.salmon_rot = function() {
+window.splatoon3api_get = function(api) {
     return new Promise((resolve, reject) => {
-        Splatoon3.getSalmonRun(res => {
+        Splatoon3[api](res => {
             resolve(res);
         })
     });
 };
 
-window.normal_rot = function() {
-    return new Promise((resolve, reject) => {
-        Splatoon3.getStages(res => {
-            resolve(res);
-        })
-    });
-};
 
 },{"splatoon3api":2}]},{},[4])(4)
 });
