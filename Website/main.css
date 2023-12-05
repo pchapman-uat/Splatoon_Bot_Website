@@ -22,6 +22,12 @@ body{
 
 
 }
+@media (max-width: 735px) {
+    body{
+        background-size: auto;
+    }
+    
+}
 .title{
     text-align: center;
     margin-right: 25%;
@@ -92,7 +98,7 @@ footer{
     padding-bottom: 30px;
     margin-bottom: 20px;
     text-align: center;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 .rounded{
@@ -107,7 +113,8 @@ footer{
     padding-left: var(--SP_padding);
     padding-right: var(--SP_padding);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
 }
 .sp_txt{
     width: var(--SP_size); 
@@ -119,6 +126,7 @@ footer{
     border-radius: 50px;
     padding: 1.5%;
     padding-top: 2%;
+    margin-bottom: 2%;
     background-color: rgba(169, 169, 169, 0.208);
 }
 
@@ -133,7 +141,8 @@ footer{
     padding-left: var(--abt_padding);
     padding-right: var(--abt_padding);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
 }
 .info{
@@ -142,6 +151,9 @@ footer{
     text-align: center;
     background-color: var(--Light_BG);
     border-radius: 25px;
+    --margin-tb: 3%;
+    margin-top: var(--margin-tb);
+    margin-bottom: var(--margin-tb);
 }
 .info .profile{
     width: var(--About_width);
@@ -213,25 +225,25 @@ footer{
     display: flex;
     --margin_lr: 10%;
     margin-top: 3%;
+    margin-bottom: 3%;
     margin-right: var(--margin_lr);
     margin-left: var(--margin_lr);
-
-    height: 600px;
     background-color: var(--Light_BG);
     border-radius: 50px;
-    justify-content: space-between;
+    justify-content: space-evenly;
+
+    flex-wrap: wrap;
 }
 
 
 #gall_img{
     margin: 3%;
-    width: 30%;
-    display: flex;
+    height: 600px;
 }
 
 #gall_img2{
     border-radius: 20px;
-    height: auto;
+    height: inherit;
 }
 
 .gall_info{
@@ -262,7 +274,18 @@ footer{
     font-size: 35px;
     padding-top: 2%;
 }
-
+@media (max-width: 916px){
+    #gall_img{
+        height: 400px;
+    }
+    #gall_header{
+        font-size: xx-large;
+    }
+    #gall_about{
+        font-size: x-large;
+        height: 200px;
+    }
+}
 .gall_button{
     margin-top: 5%;
     margin-right: 5%;
