@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="rotation.css">
-    <script src="bundle.js"></script>
+    <script src="bundle.js" type="module"></script>
+    <script src="rotation.js" type="module"></script>
     <script src="main.js"></script>
     <title>Rotation - Splatoon Bot</title>
 </head>
-<body id="page-body" onload="Test.splatoontest(false, `slider1`), loadinfo('', 'rotation')">
+<body id="page-body">
 
     <nav id="nav">
 
     </nav>
     <div class="rotation rounded">
         <div class="slider_div">
-            <input type="range" min="0" max="12" value="0" id="slider1" onchange="Test.splatoontest(true, `slider1`)">
+            <input type="range" min="0" max="12" value="0" id="slider1" onchange="fetchData(true, `slider1`)">
         </div>
 
         
@@ -89,7 +90,7 @@
             </div>
         </div>
         <div class="slider_div">
-            <input type="range" min="0" max="12" value="0" id="slider2" onchange="Test.splatoontest(true, `slider2`)">
+            <input type="range" min="0" max="12" value="0" id="slider2" onchange="fetchData(true, `slider2`)">
         </div>
 
 
