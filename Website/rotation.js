@@ -1,7 +1,18 @@
-window.onload = fetchData(false, `slider1`);                       
+window.onload = loadData(false, `slider1`);
+
+function loadData(update, id){
+    let slider1 = document.getElementById('slider1')
+    let slider2 = document.getElementById('slider2')
+    
+    slider1.addEventListener('change', function(event) {fetchData(true, `slider1`)});
+    slider2.addEventListener('change', function(event) {fetchData(true, `slider2`)});
+    fetchData(update, id);
+}
+
+                   
 async function fetchData(update, id) {
-    window.salmon_rot().then(salmonData => {
-        window.normal_rot().then(normalData => {
+    window.splatoon3api_get(`getSalmonRun`).then(salmonData => {
+        window.splatoon3api_get(`getStages`).then(normalData => {
             let sal = salmonData
             let rot = normalData
 
