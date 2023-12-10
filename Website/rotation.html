@@ -5,24 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="rotation.css">
-    <script src="bundle.js"></script>
+    <script src="bundle.js" type="module"></script>
+    <script src="rotation.js" type="module"></script>
     <script src="main.js"></script>
     <title>Rotation - Splatoon Bot</title>
+ 
 </head>
-<body id="page-body" onload="Test.splatoontest(false, `slider1`), loadinfo('', 'rotation')">
+<!-- Due to some scripts being modules, I am unable to call the load info function unless it is at the end of the
+page, as it would run before the elements loaded -->
+
+<body id="page-body">
+
 
     <nav id="nav">
 
     </nav>
+
     <div class="rotation rounded">
         <div class="slider_div">
-            <input type="range" min="0" max="12" value="0" id="slider1" onchange="Test.splatoontest(true, `slider1`)">
+            <input type="range" min="0" max="12" value="0" id="slider1">
         </div>
 
         
         <div class="normal">
             <div class="rot_header shadow" id="turf_header">
-                <div class="mode splatoon">
+                <div class="mode splatoon", id ="turf_header_txt">
                     Turf War
                 </div>
 
@@ -34,7 +41,7 @@
                 </div>
             </div>
             <div class="rot_header shadow" id="open_header">
-                <div class="mode splatoon">
+                <div class="mode splatoon" id="open_header_txt">
                     Anarchy Open
                 </div>
                 
@@ -46,7 +53,7 @@
                 </div>
             </div>
             <div class="rot_header shadow" id="series_header">
-                <div class="mode splatoon">
+                <div class="mode splatoon" id="series_header_txt">
                     Anarchy Series
                 </div>
             </div>
@@ -57,7 +64,7 @@
                 </div>
             </div>
             <div class="rot_header shadow" id="xbattle_header">
-                <div class="mode splatoon">
+                <div class="mode splatoon" id="xbattle_header_txt">
                     X-Battle
                 </div>
             </div>
@@ -69,7 +76,7 @@
             </div>
         </div>
         <div class="rot_header shadow" id="salmon_header">
-            <div class="mode splatoon">
+            <div class="mode splatoon" id="salmon_header_txt">
                 Salmon Run
             </div>
         </div>
@@ -79,7 +86,7 @@
         </div>
         <div id="big_run">
             <div class="rot_header shadow" id="big_run_header">
-                <div class="mode splatoon">
+                <div class="mode splatoon" id="big_run_header_txt">
                     Big Run
                 </div>
             </div>
@@ -89,7 +96,7 @@
             </div>
         </div>
         <div class="slider_div">
-            <input type="range" min="0" max="12" value="0" id="slider2" onchange="Test.splatoontest(true, `slider2`)">
+            <input type="range" min="0" max="12" value="0" id="slider2">
         </div>
 
 
@@ -99,5 +106,8 @@
     <footer id="footer" class="rounded">
 
     </footer>
+    <script>
+        loadinfo('','rotation')
+    </script>
 </body>
 </html>
