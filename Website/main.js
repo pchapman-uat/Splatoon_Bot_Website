@@ -229,8 +229,8 @@ function loadnav(location){
     nav_items.setAttribute("id", "items")
     parent.appendChild(nav_items)
     
-    // If the URL includes github set the reference to github viewer
-    if(url.includes("github")){
+    // If the URL includes htmlpreview set the reference to github viewer
+    if(url.includes("htmlpreview")){
         nav_image.setAttribute("href", `${makeGitURL("home.html")}`)
         createbuttons("items", nav_buttons, location, true)
     } else{
